@@ -5,9 +5,9 @@ For all exercises:
 * NIOS II Kepler Eclipse folders are in the /software/ folder within the directory. If there are multiple eclipse projects in the upload, use the one as per directions below
 
 Exercise 1.1: 
-	* Use the eclipse project in /software/exercise1_1
-	* Use the sof file in /output/ directory
+* Use the eclipse project in 
+* Use the sof file in /output/ directory
 
 Exercise 1.3: 
-	* Use the eclipse project in /software/custom_ex1_3
-	* IMPORTANT: use the sof file in the top directory, not the one in /output/
+* Use the eclipse project in /software/custom_ex1_3
+* IMPORTANT: use the sof file in the top directory, not the one in /output/
