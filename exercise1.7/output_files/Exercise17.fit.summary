@@ -1,0 +1,20 @@
+Fitter Status : Successful - Sun Jan 28 02:47:17 2018
+Quartus II 64-Bit Version : 15.0.2 Build 153 07/15/2015 SJ Full Version
+Revision Name : Exercise17
+Top-level Entity Name : Exercise17
+Family : Cyclone V
+Device : 5CSEMA5F31C6
+Timing Models : Final
+Logic utilization (in ALMs) : 2,395 / 32,070 ( 7 % )
+Total registers : 3086
+Total pins : 207 / 457 ( 45 % )
+Total virtual pins : 0
+Total block memory bits : 3,158,656 / 4,065,280 ( 78 % )
+Total RAM Blocks : 391 / 397 ( 98 % )
+Total DSP Blocks : 0 / 87 ( 0 % )
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 2 / 6 ( 33 % )
+Total DLLs : 0 / 4 ( 0 % )
