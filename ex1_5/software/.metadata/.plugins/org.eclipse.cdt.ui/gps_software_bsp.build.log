@@ -1,0 +1,6 @@
+02:04:17 **** Clean-only build of configuration Nios II for project gps_software_bsp ****
+make clean 
+[BSP clean complete]
+
+02:04:19 Build Finished (took 1s.856ms)
+

@@ -1,0 +1,25 @@
+/*
+ * gps.c
+ *
+ *  Created on: Jan 30, 2018
+ *      Author: Sathya
+ */
+
+#define GPS_Control (volatile unsigned char *)	(0x4000230)
+#define GPS_Status (volatile unsigned char *)	(0x4000230)
+#define GPS_TxData (volatile unsigned char *)	(0x4000232)
+#define GPS_RxData (volatile unsigned char *)	(0x4000232)
+#define GPS_Baud 	(volatile unsigned char *)	(0x4000234)
+
+
+char getCharGPS();
+int putCharGPS(int c);
+
+char getCharGPS() {
+
+}
+
+int putCharGPS(int c) {
+
+	return c;
+}

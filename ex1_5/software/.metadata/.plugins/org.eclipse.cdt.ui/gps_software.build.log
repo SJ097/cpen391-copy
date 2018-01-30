@@ -1,0 +1,6 @@
+02:04:24 **** Clean-only build of configuration Nios II for project gps_software ****
+make clean 
+[gps_software clean complete]
+
+02:04:24 Build Finished (took 257ms)
+
