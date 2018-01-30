@@ -1,0 +1,27 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate C:\Users\Sathya\Desktop\QuartusTest\ex1_5\gps_connection.qsys --block-symbol-file --output-directory=C:\Users\Sathya\Desktop\QuartusTest\ex1_5\gps_connection --family="Cyclone V" --part=5CSEMA5F31C6
+Progress: Loading ex1_5/gps_connection.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 15.0]
+Progress: Parameterizing module clk_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: ip-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Users\Sathya\Desktop\QuartusTest\ex1_5\gps_connection.qsys --synthesis=VERILOG --output-directory=C:\Users\Sathya\Desktop\QuartusTest\ex1_5\gps_connection\synthesis --family="Cyclone V" --part=5CSEMA5F31C6
+Progress: Loading ex1_5/gps_connection.qsys
+Progress: Reading input file
+Progress: Adding clk_0 [clock_source 15.0]
+Progress: Parameterizing module clk_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: gps_connection: Generating gps_connection "gps_connection" for QUARTUS_SYNTH
+Info: gps_connection: Done "gps_connection" with 1 modules, 1 files
+Info: ip-generate succeeded.
+Info: Finished: Create HDL design files for synthesis
