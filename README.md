@@ -12,6 +12,9 @@ Exercise 1.3 Serial Port:
 * Use the eclipse project in /software/custom_ex1_3
 * IMPORTANT: use the sof file in the top directory, not the one in /output/
 
+Exercise 1.4 Touchscreen
+* ATTENTION / ACHTUNG: Replace the Touchscreen.c in /software. Otherwise, the coordinates will be wrong.
+
 Exercise 1.6 Bluetoth: 
 * Use the eclipse project in /software/custom_ex1_3
 * IMPORTANT: use the sof file in the top directory, not the one in /output/
