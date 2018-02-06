@@ -21,7 +21,7 @@ reg [31:0] a,b,c,d,e,f,g,h;
 reg [31:0] a_new,b_new,c_new,d_new,e_new,f_new,g_new,h_new;
 reg a_h_en;
 
-typedef enum logic[2:0] {IDLE,INIT,LOAD_W,HASH,DONE} state;
+typedef enum logic[2:0] {IDLE,INIT,HASH,DONE} state;
 state current_state, next_state;
 
 assign state_out = current_state;
@@ -281,8 +281,8 @@ end
 
 always @(posedge clk) begin
 	if(current_state == INIT)
-		counter <= 16;
-	else if(current_state == LOAD_W | current_state == HASH)
+		counter <= 0;
+	else if( current_state == HASH)
 		if(counter == 8'b01000000)
 			counter <= 0;
 		else
@@ -290,11 +290,6 @@ always @(posedge clk) begin
 	else
 		counter <= 0;
 end
-
-wire [47:0][31:0] w_in;
-wire w_en;
-assign w_in[0] = W[9] + W[0] + sig1_out + sig0_out;
-assign w_en = current_state == LOAD_W;
 
 
 assign	W[0] = block[511:480];
@@ -384,15 +379,7 @@ always @(current_state or counter or block or h_in or start) begin
 			g_new <= h_in[223:192];
 			h_new <= h_in[255:224];
 			a_h_en <= 1;
-			next_state <= LOAD_W;
-		end
-		LOAD_W: begin
-			if(counter == 8'b01000000) begin
-				next_state <= HASH;
-			end
-			else begin
-				next_state <= LOAD_W;
-			end
+			next_state <= HASH;
 		end
 		HASH: begin
 			if(counter == 8'b01000000) begin

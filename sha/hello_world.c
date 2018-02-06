@@ -16,8 +16,8 @@ void hashNum(int num){
 	  while(done != 1);
 }
 
-int readHash(){
-	return IORD_8DIRECT(Hash_Base,0);
+int readHash(int offset){
+	return IORD_8DIRECT(Hash_Base,offset);
 }
 
 void Reset(){
@@ -30,7 +30,7 @@ int hashString(char *c){
 	for(i = 0; i < strlen(c); i++){
 		hashNum(c[i]);
 	}
-	return readHash();
+	return readHash(0);
 }
 
 int main()
@@ -42,19 +42,10 @@ int main()
   printf("Reset: %d\n", IORD_8DIRECT(Hash_Base,0));
   char* c = "hello world";
   int hash,i,j;
-  for(i = 0; i < 5; i++){
-	  for(j = 0; j < 15; j++){
-		  hashNum(i);
-		  printf("hash %d: %d\n",i,readHash(0));
-		  Reset();
-	  }
+  hashNum(1);
+  for(i = 0; i < 32; i++){
+	  printf("index %d: %d\n",i,readHash(2*i));
   }
-  printf("Hashing without reset \n");
-  for(i = 0; i < 8; i++){
-	  hashNum(0);
-	  printf("hash %d: %d\n",i,readHash(0));
-  }
-  printf("hash %s: %d",c,hashString(c));
   printf("Done\n");
   return 0;
 }
