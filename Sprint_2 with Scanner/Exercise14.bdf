@@ -1386,52 +1386,9 @@ agreement for further details.
 	)
 )
 (symbol
-	(rect -48 448 168 576)
-	(text "sha_block" (rect 5 0 62 14)(font "Arial" (font_size 8)))
-	(text "inst7" (rect 8 112 31 124)(font "Arial" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "clk" (rect 0 0 15 14)(font "Arial" (font_size 8)))
-		(text "clk" (rect 21 27 36 41)(font "Arial" (font_size 8)))
-		(line (pt 0 32)(pt 16 32))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "Address[15..0]" (rect 0 0 84 14)(font "Arial" (font_size 8)))
-		(text "Address[15..0]" (rect 21 43 105 57)(font "Arial" (font_size 8)))
-		(line (pt 0 48)(pt 16 48)(line_width 3))
-	)
-	(port
-		(pt 0 64)
-		(input)
-		(text "RW" (rect 0 0 20 14)(font "Arial" (font_size 8)))
-		(text "RW" (rect 21 59 41 73)(font "Arial" (font_size 8)))
-		(line (pt 0 64)(pt 16 64))
-	)
-	(port
-		(pt 0 80)
-		(input)
-		(text "DataIn[15..0]" (rect 0 0 70 14)(font "Arial" (font_size 8)))
-		(text "DataIn[15..0]" (rect 21 75 91 89)(font "Arial" (font_size 8)))
-		(line (pt 0 80)(pt 16 80)(line_width 3))
-	)
-	(port
-		(pt 216 32)
-		(output)
-		(text "DataOut[15..0]" (rect 0 0 81 14)(font "Arial" (font_size 8)))
-		(text "DataOut[15..0]" (rect 114 27 195 41)(font "Arial" (font_size 8)))
-		(line (pt 216 32)(pt 200 32)(line_width 3))
-	)
-	(drawing
-		(rectangle (rect 16 16 200 112))
-	)
-)
-(symbol
-	(rect -64 -136 184 -24)
+	(rect -80 -136 184 8)
 	(text "scanner_control" (rect 5 0 82 12)(font "Arial" ))
-	(text "inst8" (rect 8 96 31 108)(font "Arial" ))
+	(text "inst5" (rect 8 128 31 140)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -1440,32 +1397,53 @@ agreement for further details.
 		(line (pt 0 32)(pt 16 32))
 	)
 	(port
-		(pt 248 32)
+		(pt 0 48)
+		(input)
+		(text "READY" (rect 0 0 38 12)(font "Arial" ))
+		(text "READY" (rect 21 43 59 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "HASH_DONE" (rect 0 0 68 12)(font "Arial" ))
+		(text "HASH_DONE" (rect 21 59 89 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 264 32)
 		(output)
 		(text "LEDR[9..0]" (rect 0 0 55 12)(font "Arial" ))
-		(text "LEDR[9..0]" (rect 181 27 236 39)(font "Arial" ))
-		(line (pt 248 32)(pt 232 32)(line_width 3))
+		(text "LEDR[9..0]" (rect 197 27 252 39)(font "Arial" ))
+		(line (pt 264 32)(pt 248 32)(line_width 3))
 	)
 	(port
-		(pt 248 80)
+		(pt 264 80)
 		(output)
-		(text "SEND_TO_SHA[15..0]" (rect 0 0 110 12)(font "Arial" ))
-		(text "SEND_TO_SHA[15..0]" (rect 134 75 244 87)(font "Arial" ))
-		(line (pt 248 80)(pt 232 80)(line_width 3))
+		(text "SEND_TO_SHA[31..0]" (rect 0 0 110 12)(font "Arial" ))
+		(text "SEND_TO_SHA[31..0]" (rect 150 75 260 87)(font "Arial" ))
+		(line (pt 264 80)(pt 248 80)(line_width 3))
 	)
 	(port
-		(pt 248 48)
+		(pt 264 96)
+		(output)
+		(text "DONE" (rect 0 0 31 12)(font "Arial" ))
+		(text "DONE" (rect 217 91 248 103)(font "Arial" ))
+		(line (pt 264 96)(pt 248 96))
+	)
+	(port
+		(pt 264 48)
 		(bidir)
 		(text "PS2_CLK" (rect 0 0 47 12)(font "Arial" ))
-		(text "PS2_CLK" (rect 185 43 232 55)(font "Arial" ))
-		(line (pt 248 48)(pt 232 48))
+		(text "PS2_CLK" (rect 201 43 248 55)(font "Arial" ))
+		(line (pt 264 48)(pt 248 48))
 	)
 	(port
-		(pt 248 64)
+		(pt 264 64)
 		(bidir)
 		(text "PS2_DAT" (rect 0 0 47 12)(font "Arial" ))
-		(text "PS2_DAT" (rect 184 59 231 71)(font "Arial" ))
-		(line (pt 248 64)(pt 232 64))
+		(text "PS2_DAT" (rect 200 59 247 71)(font "Arial" ))
+		(line (pt 264 64)(pt 248 64))
 	)
 	(parameter
 		"character_0"
@@ -1873,14 +1851,167 @@ agreement for further details.
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
-		(rectangle (rect 16 16 232 96))
+		(rectangle (rect 16 16 248 128))
 	)
-	(annotation_block (parameter)(rect 184 -144 192 -136))
+	(annotation_block (parameter)(rect 184 -168 216 -136))
 )
-(connector
-	(text "IO_byte_enable[0]" (rect 680 487 692 577)(font "Arial" )(vertical))
-	(pt 696 312)
-	(pt 696 616)
+(symbol
+	(rect -176 264 48 376)
+	(text "system_buffer" (rect 5 0 79 12)(font "Arial" ))
+	(text "inst7" (rect 8 96 31 108)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk" (rect 0 0 14 12)(font "Arial" ))
+		(text "clk" (rect 21 27 35 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "character_done" (rect 0 0 75 12)(font "Arial" ))
+		(text "character_done" (rect 21 43 96 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "start" (rect 0 0 22 12)(font "Arial" ))
+		(text "start" (rect 21 59 43 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "toSHA[31..0]" (rect 0 0 63 12)(font "Arial" ))
+		(text "toSHA[31..0]" (rect 21 75 84 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80)(line_width 3))
+	)
+	(port
+		(pt 224 32)
+		(output)
+		(text "character[3..0]" (rect 0 0 71 12)(font "Arial" ))
+		(text "character[3..0]" (rect 143 27 214 39)(font "Arial" ))
+		(line (pt 224 32)(pt 208 32)(line_width 3))
+	)
+	(port
+		(pt 224 48)
+		(output)
+		(text "go" (rect 0 0 11 12)(font "Arial" ))
+		(text "go" (rect 194 43 205 55)(font "Arial" ))
+		(line (pt 224 48)(pt 208 48))
+	)
+	(port
+		(pt 224 64)
+		(output)
+		(text "final_done" (rect 0 0 50 12)(font "Arial" ))
+		(text "final_done" (rect 161 59 211 71)(font "Arial" ))
+		(line (pt 224 64)(pt 208 64))
+	)
+	(parameter
+		"IDLE"
+		"0001"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"BUFFER"
+		"0010"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(parameter
+		"END"
+		"0100"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
+	(drawing
+		(rectangle (rect 16 16 208 96))
+	)
+	(annotation_block (parameter)(rect 48 240 72 264))
+)
+(symbol
+	(rect -48 440 168 632)
+	(text "sha_block" (rect 5 0 62 14)(font "Arial" (font_size 8)))
+	(text "inst" (rect 8 176 25 188)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk" (rect 0 0 15 14)(font "Arial" (font_size 8)))
+		(text "clk" (rect 21 27 36 41)(font "Arial" (font_size 8)))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "Byte_select" (rect 0 0 67 14)(font "Arial" (font_size 8)))
+		(text "Byte_select" (rect 21 43 88 57)(font "Arial" (font_size 8)))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "Address[15..0]" (rect 0 0 84 14)(font "Arial" (font_size 8)))
+		(text "Address[15..0]" (rect 21 59 105 73)(font "Arial" (font_size 8)))
+		(line (pt 0 64)(pt 16 64)(line_width 3))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "RW" (rect 0 0 20 14)(font "Arial" (font_size 8)))
+		(text "RW" (rect 21 75 41 89)(font "Arial" (font_size 8)))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "IO_EN" (rect 0 0 34 14)(font "Arial" (font_size 8)))
+		(text "IO_EN" (rect 21 91 55 105)(font "Arial" (font_size 8)))
+		(line (pt 0 96)(pt 16 96))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "DataInNios[7..0]" (rect 0 0 88 14)(font "Arial" (font_size 8)))
+		(text "DataInNios[7..0]" (rect 21 107 109 121)(font "Arial" (font_size 8)))
+		(line (pt 0 112)(pt 16 112)(line_width 3))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "DataIn[31..0]" (rect 0 0 70 14)(font "Arial" (font_size 8)))
+		(text "DataIn[31..0]" (rect 21 123 91 137)(font "Arial" (font_size 8)))
+		(line (pt 0 128)(pt 16 128)(line_width 3))
+	)
+	(port
+		(pt 0 144)
+		(input)
+		(text "start_in" (rect 0 0 42 14)(font "Arial" (font_size 8)))
+		(text "start_in" (rect 21 139 63 153)(font "Arial" (font_size 8)))
+		(line (pt 0 144)(pt 16 144))
+	)
+	(port
+		(pt 216 32)
+		(output)
+		(text "DataOut[7..0]" (rect 0 0 74 14)(font "Arial" (font_size 8)))
+		(text "DataOut[7..0]" (rect 121 27 195 41)(font "Arial" (font_size 8)))
+		(line (pt 216 32)(pt 200 32)(line_width 3))
+	)
+	(port
+		(pt 216 48)
+		(output)
+		(text "done" (rect 0 0 28 14)(font "Arial" (font_size 8)))
+		(text "done" (rect 167 43 195 57)(font "Arial" (font_size 8)))
+		(line (pt 216 48)(pt 200 48))
+	)
+	(port
+		(pt 216 64)
+		(output)
+		(text "hashing" (rect 0 0 44 14)(font "Arial" (font_size 8)))
+		(text "hashing" (rect 151 59 195 73)(font "Arial" (font_size 8)))
+		(line (pt 216 64)(pt 200 64))
+	)
+	(drawing
+		(rectangle (rect 16 16 200 176))
+	)
 )
 (connector
 	(pt 840 296)
@@ -2358,19 +2489,6 @@ agreement for further details.
 	(pt 960 856)
 )
 (connector
-	(pt 792 888)
-	(pt 960 888)
-	(bus)
-)
-(connector
-	(pt 808 296)
-	(pt 808 920)
-)
-(connector
-	(pt 808 920)
-	(pt 960 920)
-)
-(connector
 	(text "key[0]" (rect 168 219 180 250)(font "Arial" )(vertical))
 	(pt 184 104)
 	(pt 184 984)
@@ -2396,10 +2514,6 @@ agreement for further details.
 	(pt 960 936)
 )
 (connector
-	(pt 696 664)
-	(pt 696 936)
-)
-(connector
 	(pt 1280 888)
 	(pt 1264 888)
 	(bus)
@@ -2408,14 +2522,6 @@ agreement for further details.
 	(pt 1280 736)
 	(pt 1280 888)
 	(bus)
-)
-(connector
-	(pt 664 296)
-	(pt 808 296)
-)
-(connector
-	(pt 808 296)
-	(pt 840 296)
 )
 (connector
 	(pt 80 104)
@@ -2451,17 +2557,6 @@ agreement for further details.
 (connector
 	(pt 776 280)
 	(pt 776 904)
-	(bus)
-)
-(connector
-	(pt 792 -448)
-	(pt 792 344)
-	(bus)
-)
-(connector
-	(text "IO_write_data[7..0]" (rect 792 703 804 796)(font "Arial" )(vertical))
-	(pt 792 344)
-	(pt 792 888)
 	(bus)
 )
 (connector
@@ -2506,14 +2601,6 @@ agreement for further details.
 	(pt -112 -104)
 )
 (connector
-	(pt -112 -104)
-	(pt -64 -104)
-)
-(connector
-	(pt 88 88)
-	(pt 88 400)
-)
-(connector
 	(pt 88 400)
 	(pt -112 400)
 )
@@ -2526,19 +2613,6 @@ agreement for further details.
 	(pt 112 88)
 )
 (connector
-	(pt -112 400)
-	(pt -112 480)
-)
-(connector
-	(pt -112 480)
-	(pt -48 480)
-)
-(connector
-	(pt -112 904)
-	(pt -112 496)
-	(bus)
-)
-(connector
 	(pt -112 904)
 	(pt 776 904)
 	(bus)
@@ -2549,50 +2623,59 @@ agreement for further details.
 	(bus)
 )
 (connector
-	(pt -112 496)
-	(pt -48 496)
-	(bus)
-)
-(connector
-	(pt -96 968)
-	(pt -96 512)
-)
-(connector
-	(pt -96 968)
-	(pt 736 968)
-)
-(connector
-	(pt 736 968)
-	(pt 960 968)
-)
-(connector
-	(pt -96 512)
-	(pt -48 512)
-)
-(connector
 	(pt 184 -56)
 	(pt 200 -56)
 	(bus)
 )
 (connector
+	(pt -112 -104)
+	(pt -80 -104)
+)
+(connector
+	(pt 88 224)
+	(pt -208 224)
+)
+(connector
+	(pt 88 88)
+	(pt 88 224)
+)
+(connector
+	(pt 88 224)
+	(pt 88 400)
+)
+(connector
+	(pt -208 224)
+	(pt -208 296)
+)
+(connector
+	(pt -208 296)
+	(pt -176 296)
+)
+(connector
+	(pt 184 -40)
+	(pt 184 56)
+)
+(connector
+	(pt 184 56)
+	(pt -264 56)
+)
+(connector
 	(pt 200 -56)
-	(pt 200 608)
+	(pt 200 640)
 	(bus)
 )
 (connector
-	(pt 200 608)
-	(pt -48 608)
+	(pt 200 640)
+	(pt -72 640)
 	(bus)
 )
 (connector
-	(pt -48 608)
-	(pt -48 528)
-	(bus)
+	(pt -112 400)
+	(pt -112 472)
 )
 (connector
-	(pt 168 480)
-	(pt 168 168)
-	(bus)
+	(pt -112 472)
+	(pt -48 472)
 )
 (connector
 	(pt 152 168)
@@ -2603,6 +2686,161 @@ agreement for further details.
 	(pt 168 168)
 	(pt 288 168)
 	(bus)
+)
+(connector
+	(pt -72 640)
+	(pt -72 568)
+	(bus)
+)
+(connector
+	(pt -48 568)
+	(pt -72 568)
+	(bus)
+)
+(connector
+	(pt -352 712)
+	(pt 240 712)
+)
+(connector
+	(pt -352 -72)
+	(pt -352 712)
+)
+(connector
+	(pt -352 -72)
+	(pt -80 -72)
+)
+(connector
+	(text "IO_read_data[7..0]" (rect 152 384 164 476)(font "Arial" )(vertical))
+	(pt 168 168)
+	(pt 168 472)
+	(bus)
+)
+(connector
+	(pt -112 504)
+	(pt -112 904)
+	(bus)
+)
+(connector
+	(pt -112 504)
+	(pt -48 504)
+	(bus)
+)
+(connector
+	(pt -96 968)
+	(pt 736 968)
+)
+(connector
+	(pt 736 968)
+	(pt 960 968)
+)
+(connector
+	(pt -96 968)
+	(pt -96 520)
+)
+(connector
+	(pt -96 520)
+	(pt -48 520)
+)
+(connector
+	(pt 808 296)
+	(pt 808 920)
+)
+(connector
+	(pt 664 296)
+	(pt 808 296)
+)
+(connector
+	(pt 808 296)
+	(pt 840 296)
+)
+(connector
+	(pt -80 920)
+	(pt -80 536)
+)
+(connector
+	(pt -80 920)
+	(pt 808 920)
+)
+(connector
+	(pt 808 920)
+	(pt 960 920)
+)
+(connector
+	(pt -80 536)
+	(pt -48 536)
+)
+(connector
+	(text "IO_write_data[7..0]" (rect 792 703 804 796)(font "Arial" )(vertical))
+	(pt 792 344)
+	(pt 792 888)
+	(bus)
+)
+(connector
+	(pt -208 888)
+	(pt -208 552)
+	(bus)
+)
+(connector
+	(pt -208 888)
+	(pt 792 888)
+	(bus)
+)
+(connector
+	(pt 792 888)
+	(pt 960 888)
+	(bus)
+)
+(connector
+	(pt -208 552)
+	(pt -48 552)
+	(bus)
+)
+(connector
+	(pt -232 696)
+	(pt -232 488)
+)
+(connector
+	(pt -232 488)
+	(pt -48 488)
+)
+(connector
+	(text "IO_byte_enable[0]" (rect 680 487 692 577)(font "Arial" )(vertical))
+	(pt 696 312)
+	(pt 696 616)
+)
+(connector
+	(pt -232 696)
+	(pt 696 696)
+)
+(connector
+	(pt 696 664)
+	(pt 696 696)
+)
+(connector
+	(pt 696 696)
+	(pt 696 936)
+)
+(connector
+	(pt -48 584)
+	(pt -264 584)
+)
+(connector
+	(pt -264 584)
+	(pt -264 56)
+)
+(connector
+	(text "IO_write_data[15..0]" (rect 776 250 788 349)(font "Arial" )(vertical))
+	(pt 792 -448)
+	(pt 792 344)
+	(bus)
+)
+(connector
+	(pt 240 504)
+	(pt 240 712)
+)
+(connector
+	(pt 240 504)
+	(pt 168 504)
 )
 (junction (pt 664 296))
 (junction (pt 696 312))
@@ -2626,6 +2864,10 @@ agreement for further details.
 (junction (pt 776 904))
 (junction (pt 736 968))
 (junction (pt 168 168))
+(junction (pt 88 224))
+(junction (pt 808 920))
+(junction (pt 792 888))
+(junction (pt 696 696))
 (text "IO BaseAddress 0x8400_0200 - 0x8400_02FF" (rect 1024 1056 1289 1070)(font "Arial" (font_size 8)))
 (text "BlueTooth_TXD" (rect 1520 864 1607 878)(font "Arial" (font_size 8)))
 (text "BlueTooth_RXD" (rect 680 944 768 958)(font "Arial" (font_size 8)))

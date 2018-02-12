@@ -6,12 +6,18 @@ module scanner_control(
 
     //////////// LED //////////
     LEDR,
+	 
+	 READY,
+	 
+	 HASH_DONE,
     
     //////// PS2 //////////
     PS2_CLK,
     PS2_DAT,
     
-	 SEND_TO_SHA
+	 SEND_TO_SHA,
+	 
+	 DONE
 );
 `define zero_pad(width,signal)  {{((width)-$size(signal)){1'b0}},(signal)}
 //=======================================================
@@ -28,7 +34,11 @@ output           [9:0]      LEDR;
 inout                       PS2_CLK;
 inout                       PS2_DAT;
 
-output reg		  [15:0]		 SEND_TO_SHA;
+output reg		  [31:0]		 SEND_TO_SHA;
+output reg 						 DONE = 0;
+
+input								 READY;
+input 							 HASH_DONE;
 
 //=======================================================
 //  REG/WIRE declarations
@@ -142,7 +152,7 @@ reg [31:0] scanned_barcode = 0;
 reg [4:0] state;
 
 // Decimal input
-always @(posedge kbd_data_ready) begin
+/*always @(posedge kbd_data_ready) begin
 		case(kbd_received_ascii_code)
 			character_0: scanned_barcode = scanned_barcode*10 + 0;
 			character_1: scanned_barcode = scanned_barcode*10 + 1;
@@ -159,110 +169,100 @@ always @(posedge kbd_data_ready) begin
 		endcase
 		
 		if (SEND_TO_SHA[15:0] == scanned_barcode[15:0]) scanned_barcode = 0;
-	end
+		if (READY == 0) scanned_barcode = 0;
+	end*/
 
 // Hexadecimal input
-/*always @(posedge kbd_data_ready) begin
+always @(posedge kbd_data_ready) begin
 		case(kbd_received_ascii_code)
-			character_0: scanned_barcode <= scanned_barcode*16 + 0;
-			character_1: scanned_barcode <= scanned_barcode*16 + 1;
-			character_2: scanned_barcode <= scanned_barcode*16 + 2;
-			character_3: scanned_barcode <= scanned_barcode*16 + 3;
-			character_4: scanned_barcode <= scanned_barcode*16 + 4;
-			character_5: scanned_barcode <= scanned_barcode*16 + 5;
-			character_6: scanned_barcode <= scanned_barcode*16 + 6;
-			character_7: scanned_barcode <= scanned_barcode*16 + 7;
-			character_8: scanned_barcode <= scanned_barcode*16 + 8;
-			character_9: scanned_barcode <= scanned_barcode*16 + 9;
-			character_A: scanned_barcode <= scanned_barcode*16 + 10;
-			character_B: scanned_barcode <= scanned_barcode*16 + 11;
-			character_C: scanned_barcode <= scanned_barcode*16 + 12;
-			character_D: scanned_barcode <= scanned_barcode*16 + 13;
-			character_E: scanned_barcode <= scanned_barcode*16 + 14;
-			character_F: scanned_barcode <= scanned_barcode*16 + 15;
-			character_R: scanned_barcode <= 0;
+			character_0: scanned_barcode = scanned_barcode*16 + 0;
+			character_1: scanned_barcode = scanned_barcode*16 + 1;
+			character_2: scanned_barcode = scanned_barcode*16 + 2;
+			character_3: scanned_barcode = scanned_barcode*16 + 3;
+			character_4: scanned_barcode = scanned_barcode*16 + 4;
+			character_5: scanned_barcode = scanned_barcode*16 + 5;
+			character_6: scanned_barcode = scanned_barcode*16 + 6;
+			character_7: scanned_barcode = scanned_barcode*16 + 7;
+			character_8: scanned_barcode = scanned_barcode*16 + 8;
+			character_9: scanned_barcode = scanned_barcode*16 + 9;
+			character_A: scanned_barcode = scanned_barcode*16 + 10;
+			character_B: scanned_barcode = scanned_barcode*16 + 11;
+			character_C: scanned_barcode = scanned_barcode*16 + 12;
+			character_D: scanned_barcode = scanned_barcode*16 + 13;
+			character_E: scanned_barcode = scanned_barcode*16 + 14;
+			character_F: scanned_barcode = scanned_barcode*16 + 15;
+			character_R: scanned_barcode = 0;
 			default: scanned_barcode = scanned_barcode;
 		endcase
-	end*/
+		
+		if (SEND_TO_SHA[15:0] == scanned_barcode[15:0]) scanned_barcode = 0;
+		if (READY == 0) scanned_barcode = 0;
+	end
 	
 
 // All digits and letters
 /*always @(posedge kbd_data_ready) begin
 		case(kbd_received_ascii_code)
-			character_0: scanned_barcode <= scanned_barcode*36 + 0;
-			character_1: scanned_barcode <= scanned_barcode*36 + 1;
-			character_2: scanned_barcode <= scanned_barcode*36 + 2;
-			character_3: scanned_barcode <= scanned_barcode*36 + 3;
-			character_4: scanned_barcode <= scanned_barcode*36 + 4;
-			character_5: scanned_barcode <= scanned_barcode*36 + 5;
-			character_6: scanned_barcode <= scanned_barcode*36 + 6;
-			character_7: scanned_barcode <= scanned_barcode*36 + 7;
-			character_8: scanned_barcode <= scanned_barcode*36 + 8;
-			character_9: scanned_barcode <= scanned_barcode*36 + 9;
-			character_A: scanned_barcode <= scanned_barcode*36 + 10;
-			character_B: scanned_barcode <= scanned_barcode*36 + 11;
-			character_C: scanned_barcode <= scanned_barcode*36 + 12;
-			character_D: scanned_barcode <= scanned_barcode*36 + 13;
-			character_E: scanned_barcode <= scanned_barcode*36 + 14;
-			character_F: scanned_barcode <= scanned_barcode*36 + 15;
-			character_G: scanned_barcode <= scanned_barcode*36 + 16;
-			character_H: scanned_barcode <= scanned_barcode*36 + 17;
-			character_I: scanned_barcode <= scanned_barcode*36 + 18;
-			character_J: scanned_barcode <= scanned_barcode*36 + 19;
-			character_K: scanned_barcode <= scanned_barcode*36 + 20;
-			character_L: scanned_barcode <= scanned_barcode*36 + 21;
-			character_M: scanned_barcode <= scanned_barcode*36 + 22;
-			character_N: scanned_barcode <= scanned_barcode*36 + 23;
-			character_O: scanned_barcode <= scanned_barcode*36 + 24;
-			character_P: scanned_barcode <= scanned_barcode*36 + 25;
-			character_Q: scanned_barcode <= scanned_barcode*36 + 26;
-			character_R: scanned_barcode <= scanned_barcode*36 + 27;
-			character_S: scanned_barcode <= scanned_barcode*36 + 28;
-			character_T: scanned_barcode <= scanned_barcode*36 + 29;
-			character_U: scanned_barcode <= scanned_barcode*36 + 30;
-			character_V: scanned_barcode <= scanned_barcode*36 + 31;
-			character_W: scanned_barcode <= scanned_barcode*36 + 32;
-			character_X: scanned_barcode <= scanned_barcode*36 + 33;
-			character_Y: scanned_barcode <= scanned_barcode*36 + 34;
-			character_Z: scanned_barcode <= scanned_barcode*36 + 35;
-			character_minus: scanned_barcode <= 0;
+			character_0: scanned_barcode = scanned_barcode*36 + 0;
+			character_1: scanned_barcode = scanned_barcode*36 + 1;
+			character_2: scanned_barcode = scanned_barcode*36 + 2;
+			character_3: scanned_barcode = scanned_barcode*36 + 3;
+			character_4: scanned_barcode = scanned_barcode*36 + 4;
+			character_5: scanned_barcode = scanned_barcode*36 + 5;
+			character_6: scanned_barcode = scanned_barcode*36 + 6;
+			character_7: scanned_barcode = scanned_barcode*36 + 7;
+			character_8: scanned_barcode = scanned_barcode*36 + 8;
+			character_9: scanned_barcode = scanned_barcode*36 + 9;
+			character_A: scanned_barcode = scanned_barcode*36 + 10;
+			character_B: scanned_barcode = scanned_barcode*36 + 11;
+			character_C: scanned_barcode = scanned_barcode*36 + 12;
+			character_D: scanned_barcode = scanned_barcode*36 + 13;
+			character_E: scanned_barcode = scanned_barcode*36 + 14;
+			character_F: scanned_barcode = scanned_barcode*36 + 15;
+			character_G: scanned_barcode = scanned_barcode*36 + 16;
+			character_H: scanned_barcode = scanned_barcode*36 + 17;
+			character_I: scanned_barcode = scanned_barcode*36 + 18;
+			character_J: scanned_barcode = scanned_barcode*36 + 19;
+			character_K: scanned_barcode = scanned_barcode*36 + 20;
+			character_L: scanned_barcode = scanned_barcode*36 + 21;
+			character_M: scanned_barcode = scanned_barcode*36 + 22;
+			character_N: scanned_barcode = scanned_barcode*36 + 23;
+			character_O: scanned_barcode = scanned_barcode*36 + 24;
+			character_P: scanned_barcode = scanned_barcode*36 + 25;
+			character_Q: scanned_barcode = scanned_barcode*36 + 26;
+			character_R: scanned_barcode = scanned_barcode*36 + 27;
+			character_S: scanned_barcode = scanned_barcode*36 + 28;
+			character_T: scanned_barcode = scanned_barcode*36 + 29;
+			character_U: scanned_barcode = scanned_barcode*36 + 30;
+			character_V: scanned_barcode = scanned_barcode*36 + 31;
+			character_W: scanned_barcode = scanned_barcode*36 + 32;
+			character_X: scanned_barcode = scanned_barcode*36 + 33;
+			character_Y: scanned_barcode = scanned_barcode*36 + 34;
+			character_Z: scanned_barcode = scanned_barcode*36 + 35;
+			character_minus: scanned_barcode = 0;
 			default: scanned_barcode = scanned_barcode;
 		endcase
+		
+		if (SEND_TO_SHA[15:0] == scanned_barcode[15:0]) scanned_barcode = 0;
+		if (READY == 0) scanned_barcode = 0;
 	end*/
 	
 	
-always @(posedge CLK_50M)
+always @(posedge CLK_50M) begin
 	case(kbd_received_ascii_code)
-		character_enter: begin
-								LED[7:0] = scanned_barcode[7:0];
-								SEND_TO_SHA[15:0] = scanned_barcode[15:0];
-								// scanned_barcode = 0;
+		character_enter: if (READY == 1) begin
+								LED[7:0] <= scanned_barcode[7:0];
+								SEND_TO_SHA[31:0] <= scanned_barcode[31:0];
+								DONE <= 1;
 							end
 		character_space: LED[7:0] = scanned_barcode[15:8];
 		character_backspace: LED[7:0] = scanned_barcode[23:16];
 		character_stop: LED[7:0] = scanned_barcode[31:24];
 		default: LED[7:0] = LED[7:0];
 	endcase
+	if (HASH_DONE == 1) DONE <= 0;
+	end
 	
-/*parameter IDLE = 4'b0001;
-parameter WAIT1 = 4'b0010;
-parameter WAIT2 = 4'b0100;
-parameter OVERWRITE = 4'b1000;
-	
-always @(posedge CLK_50M)
-	case(state)
-		IDLE: if (SEND_TO_SHA[15:0] == scanned_barcode[15:0])
-					state <= WAIT1;
-				else state <= IDLE;
-		WAIT1: state <= WAIT2;
-		WAIT2: state <= OVERWRITE;
-		OVERWRITE: begin
-						scanned_barcode <= 0;
-						state <= IDLE;
-					  end
-		default: state <= IDLE;
-	endcase*/
-
 //======================================================================================
 // 
 // Keyboard Interface
