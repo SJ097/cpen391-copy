@@ -1,6 +1,6 @@
 EDA Netlist Writer report for Exercise17
-Thu Feb 01 00:02:06 2018
-Quartus II 64-Bit Version 15.0.2 Build 153 07/15/2015 SJ Full Version
+Sat Feb 10 15:55:45 2018
+Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
 
 
 ---------------------
@@ -37,7 +37,7 @@ agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Thu Feb 01 00:02:06 2018 ;
+; EDA Netlist Writer Status ; Successful - Sat Feb 10 15:55:45 2018 ;
 ; Revision Name             ; Exercise17                            ;
 ; Top-level Entity Name     ; Exercise14                            ;
 ; Family                    ; Cyclone V                             ;
@@ -72,7 +72,7 @@ agreement for further details.
 +--------------------------------------------------------------------+
 ; Generated Files                                                    ;
 +--------------------------------------------------------------------+
-; C:/Users/p1p0b/Desktop/Sprint_1/simulation/modelsim/Exercise17.vho ;
+; C:/Users/bensw/Desktop/Sprint_2/simulation/modelsim/Exercise17.vho ;
 +--------------------------------------------------------------------+
 
 
@@ -81,14 +81,14 @@ agreement for further details.
 +-----------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
-    Info: Version 15.0.2 Build 153 07/15/2015 SJ Full Version
-    Info: Processing started: Thu Feb 01 00:02:01 2018
+    Info: Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
+    Info: Processing started: Sat Feb 10 15:55:39 2018
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off Exercise14 -c Exercise17
 Warning (10905): Generated the EDA functional simulation files although EDA timing simulation option is chosen.
-Info (204019): Generated file Exercise17.vho in folder "C:/Users/p1p0b/Desktop/Sprint_1/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file Exercise17.vho in folder "C:/Users/bensw/Desktop/Sprint_2/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 990 megabytes
-    Info: Processing ended: Thu Feb 01 00:02:07 2018
+    Info: Peak virtual memory: 995 megabytes
+    Info: Processing ended: Sat Feb 10 15:55:45 2018
     Info: Elapsed time: 00:00:06
     Info: Total CPU time (on all processors): 00:00:05
 

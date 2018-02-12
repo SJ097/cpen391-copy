@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <io.h>
 
 #define Wifi_Control (volatile unsigned char *)	(0x4000240)
@@ -9,10 +10,12 @@
 
 char getcharWifi(void);
 int putcharWifi(int);
+void sendStringWifi(char* str);
+void Init_Wifi(void);
 
 void Init_Wifi(void){
 
-	IOWR_8DIRECT(Wifi_Baud, 0, 1);
+	IOWR_8DIRECT(Wifi_Baud, 0, 1);	//115k
 	IOWR_8DIRECT(Wifi_Control, 0, 149);
 
 	//IOWR_8DIRECT(Wifi_RxData, 0, 0);
@@ -23,7 +26,7 @@ void Init_Wifi(void){
 	}
 }
 
-void sendString(char* str){
+void sendStringWifi(char* str){
 	int i;
 	for(i = 0; i < strlen(str); i++){
 		putcharWifi(str[i]);

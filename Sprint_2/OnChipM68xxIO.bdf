@@ -4,7 +4,7 @@ editor if you plan to continue editing the block that represents it in
 the Block Editor! File corruption is VERY likely to occur.
 */
 /*
-Copyright (C) 1991-2014 Altera Corporation. All rights reserved.
+Copyright (C) 1991-2015 Altera Corporation. All rights reserved.
 Your use of Altera Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
@@ -2429,16 +2429,6 @@ agreement for further details.
 	(pt 984 984)
 )
 (connector
-	(text "Wifi_Port_En" (rect 818 496 882 508)(font "Arial" ))
-	(pt 808 512)
-	(pt 880 512)
-)
-(connector
-	(text "Wifi_Port_En" (rect 930 1240 994 1252)(font "Arial" ))
-	(pt 976 1256)
-	(pt 920 1256)
-)
-(connector
 	(pt 928 1080)
 	(pt 928 1096)
 )
@@ -2465,6 +2455,18 @@ agreement for further details.
 (connector
 	(pt 960 1368)
 	(pt 920 1368)
+)
+(connector
+	(pt 808 512)
+	(pt 888 512)
+)
+(connector
+	(pt 888 512)
+	(pt 888 1256)
+)
+(connector
+	(pt 976 1256)
+	(pt 888 1256)
 )
 (junction (pt 472 384))
 (junction (pt 440 608))

@@ -319,7 +319,7 @@ void Line(int x1, int y1, int x2, int y2, int Colour) {
 }
 
 //HIGH LEVEL FUNCTIONS
-void InitializeStartScreen_state0(void)
+void InitializeScreenState0(void)
 {
 	ClearScreen(WHITE);
 
@@ -362,7 +362,7 @@ void InitializeStartScreen_state0(void)
 	  OutGraphicsStringFont2(500,250,BLACK,WHITE,"Check Point Machine",1);
 }
 
-void InitializeStartScreen_state1()
+void InitializeScreenState1()
 {
 	ClearScreen(WHITE);
 
@@ -370,7 +370,7 @@ void InitializeStartScreen_state1()
 	FilledRectangle(200,0,300,50,RED);
 	FilledRectangle(300,0,600,50,CYAN);
 
-	//progression step
+	//progression bar
 	OutGraphicsStringFont2(250,20,BLACK,RED,"1",1);
 
 	//Instructions text
@@ -380,9 +380,45 @@ void InitializeStartScreen_state1()
 
 	OutGraphicsStringFont2(100,250,BLACK,WHITE,"encrypted id:",1);
 
-	//Button to move on
-	FilledRectangle(0,380,300,480,BLUE);
-
+	//Back Button
+	FilledRectangle(0,420,200,480,BLUE);
 	//Back Button text
-	OutGraphicsStringFont2(130,420,BLACK,BLUE,"Back",1);
+	OutGraphicsStringFont2(90,445,BLACK,BLUE,"Back",1);
+
+	//Next Button
+	FilledRectangle(600,420,800,480,BLUE);
+	//Back Button text
+	OutGraphicsStringFont2(665,445,BLACK,BLUE,"Next",1);
+}
+
+void InitializeScreenState2()
+{
+	ClearScreen(WHITE);
+
+	//status or progression bar
+	FilledRectangle(200,0,300,50,RED);
+	FilledRectangle(300,0,600,50,CYAN);
+
+	//progression bar
+	OutGraphicsStringFont2(250,20,BLACK,RED,"1",1);
+
+	//middle line
+	LineAcc(400, 50, 400, 480, BLACK);
+
+	//Instructions text
+	OutGraphicsStringFont2(100,100,BLACK,WHITE,"Please enter",1);
+	OutGraphicsStringFont2(100,200,BLACK,WHITE,"security code",1);
+
+	//Back Button
+	FilledRectangle(0,420,200,480,BLUE);
+	//Back Button text
+	OutGraphicsStringFont2(90,445,BLACK,BLUE,"Back",1);
+
+	//Next Button
+	FilledRectangle(600,420,800,480,BLUE);
+	//Back Button text
+	OutGraphicsStringFont2(665,445,BLACK,BLUE,"Next",1);
+
+	//number pad
+
 }

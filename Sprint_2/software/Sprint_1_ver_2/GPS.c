@@ -26,6 +26,8 @@
 #define CYAN   6
 #define MAGENTA   7
 
+char getcharGPS(void);
+
 void Init_GPS(void)
 {
 	IOWR_8DIRECT(GPS_Baud, 0, 7);			//9600baud rate -> 3'b111
