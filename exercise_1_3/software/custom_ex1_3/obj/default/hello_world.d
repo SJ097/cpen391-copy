@@ -1,7 +1,0 @@
-obj/default/hello_world.o: hello_world.c \
- ../custom_ex1_3_bsp//HAL/inc/io.h \
- ../custom_ex1_3_bsp//HAL/inc/alt_types.h
-
-../custom_ex1_3_bsp//HAL/inc/io.h:
-
-../custom_ex1_3_bsp//HAL/inc/alt_types.h:
