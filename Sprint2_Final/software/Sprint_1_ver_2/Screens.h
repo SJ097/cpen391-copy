@@ -26,11 +26,24 @@ void Key0Pressed(void);
 
 //global variables
 volatile int state;		//initial state
+int errCode;
 char security_code[5];
 int security_code_index;
 int attempts;
 
 //global variable to save the security code
 char wifi_info_of_interest[MAX_WIFI_INFO_OF_INTEREST_SIZE];
+
+//SHA 256 Artificial Database
+typedef struct {
+	char* id;
+	long long hash;
+	char* phone;
+} customer;
+
+customer group7[4];
+
+//counter that corresponds to the database index in case there is a match
+int passenger;
 
 #endif /* SCREENS_H_ */

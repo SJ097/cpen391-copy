@@ -98,7 +98,6 @@ char complete_time[15];
 char lattitude[16];
 char longitude[17];
 char char1;
-int passenger;
 
 //gps volatile interrupt variable
 volatile int update_interrupt_signal = 0;
@@ -108,18 +107,12 @@ volatile int update_interrupt_signal = 0;
 char wifi_response[MAX_WIFI_BUFFER_SIZE];
 int wifi_counter = 0;
 
-//SHA 256
-typedef struct {
-	char* id;
-	long long hash;
-	char* phone;
-} customer;
-
 int main() {
+	//initialize state
 	state = 0;
 	printf("Hello from Nios II!\n");
 
-	customer group7[4];
+	//Artificial Database initialization
 	group7[0].id = "Matthew";
 	group7[0].hash = 1054976;
 	group7[0].phone = "(518) 366-7951";
@@ -143,6 +136,7 @@ int main() {
 	Init_Timer(TIMER_BASE_TIMER_0, TIMER_DURATION_TIMER_0);	//idle screen timer
 	Init_Timer(TIMER_BASE_TIMER_1, TIMER_DURATION_TIMER_1);	//gps timer
 	Init_Interrupt();
+	Reset();	//reset for SHA 256
 
 	//start idle screen interrupt timer: timer 0
 	Start_Timer(TIMER_BASE_TIMER_0);
@@ -170,7 +164,6 @@ int main() {
 					Restart_Timer(TIMER_BASE_TIMER_0, TIMER_DURATION_TIMER_0);
 
 					Capture_Touch_Points();
-					runBtn(p1.x, p1.y);
 
 					printf("Button was pressed! Moving to screen 1\n");
 					state = 1;
@@ -180,46 +173,35 @@ int main() {
 
 			//second screen, state 1
 		case 1:
+			clearBtns();
 			ScreenOneLoad();
 			UpdateGPSBlocking();
-
-			//RetrieveWiFiSecurityCode();
-
 			while (state == 1) {
+				//check timer interrupt signal
 				if (update_interrupt_signal == 1)
 					UpdateGPSBlocking();
 
-				long long hashed = readWholeHash();
-
+				//check if SHA block is done hashing
 				if (WaitForDoneNoBlock()) {
-					hashed = readWholeHash();
+					long long hashed = readWholeHash();
 					WaitForReady();
 
 					int i;
 					for (i = 0; i < 4; i++) {
 						if (hashed == group7[i].hash) {
-
-							// MOVE TO STATE 2
+							//restart timer
+							Restart_Timer(TIMER_BASE_TIMER_0, TIMER_DURATION_TIMER_0);
+							// Update global variables in Screen.h MOVE TO STATE 2
 							passenger = i;
 							state = 2;
-
-							// IMPLEMENT IN STATE 3
-							int j = 0;
-							printf("Hi ");
-
-							while (*group7[i].id != '\0') {
-								printf("%c", *group7[i].id++);
-								j++;
-							}
-
-							printf(", welcome.\n");
-							group7[i].id -= j;
-							break;	////////////////////////////////////////////
+							break;
 						}
-
-						else if (i == 3)
+						else if (i == 3) {
 							// GO TO ERROR SCREEN
 							state = 4;
+							errCode = 0;
+						}
+
 					}
 
 					if (ScreenTouchedNoBlock()) {
@@ -267,15 +249,18 @@ int main() {
 			break;
 
 		case 3:
+			clearBtns();
 			ScreenThreeLoad();
 			UpdateGPSBlocking();
-			usleep(10000000);
+			usleep(2000000);		//sleep 10 seconds before going to the start screen
 			state = 0;
 			break;
 
 		case 4:
+			clearBtns();
 			ScreenErrLoad();
-			usleep(10000000);
+			UpdateGPSBlocking();
+			usleep(2000000);		//sleep 10 seconds before going to the start screen
 			state = 0;
 			break;
 		}
@@ -467,7 +452,6 @@ void UpdateGPSBlocking(void) {
 					//actually print it out to the screen
 					OutGraphicsStringFont2(650, 15, BLACK, WHITE, complete_time,
 							1);
-					printf("%s", complete_time);
 
 					//print out coordinates
 					snprintf(lattitude, sizeof(lattitude), "Lattitude: %c%c %c",

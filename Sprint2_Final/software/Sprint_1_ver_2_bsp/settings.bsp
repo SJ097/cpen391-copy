@@ -2,9 +2,9 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Feb 15, 2018 3:28:58 AM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1518694138825</BspGeneratedUnixTimeStamp>
-        <BspGeneratedLocation>C:\Users\bensw\Desktop\Sprint_2Scanner\software\Sprint_1_ver_2_bsp</BspGeneratedLocation>
+        <BspGeneratedTimeStamp>Feb 15, 2018 12:59:55 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1518728395215</BspGeneratedUnixTimeStamp>
+        <BspGeneratedLocation>C:\Users\bensw\Desktop\Sprint2_Final\software\Sprint_1_ver_2_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\nios_system.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>

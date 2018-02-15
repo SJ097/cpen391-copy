@@ -110,6 +110,8 @@ void Key9Pressed(){
 
 void KeyOkPressed(){
 	int i;
+	char AttemptsLeftMessage[30];
+
 	//if the key entered is less than 4 characters
 	if(!CodeFourCharCheck())
 		return;
@@ -122,9 +124,11 @@ void KeyOkPressed(){
 			printf("Key match!\n");
 		}
 
-		else
+		else {
 			attempts--;
-
+			snprintf(AttemptsLeftMessage, sizeof(AttemptsLeftMessage), "%d attempts remaining", attempts);
+			OutGraphicsStringFont2(50,400,12,16,AttemptsLeftMessage,1);
+		}
 	}
 	//else attempts must == 0
 	else
@@ -134,8 +138,11 @@ void KeyOkPressed(){
 			state = 3;
 			printf("Key match!\n");
 		}
-		else
+		else {
+			OutGraphicsStringFont2(50,400,12,16,"0 attempts remaining",1);
 			state= 4;
+			errCode = 1;
+		}
 	}
 
 	//clear everything
