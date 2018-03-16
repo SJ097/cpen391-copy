@@ -6,7 +6,7 @@
 <stringAttribute key="byteStreamDeviceDeviceID" value="2"/>
 <stringAttribute key="byteStreamDeviceInstanceID" value="0"/>
 <booleanAttribute key="downloadProgram" value="true"/>
-<stringAttribute key="elfFile" value="C:\Users\Sathya\Desktop\Schoolwork\Year3\Term2\CPEN391\Sprint_2Scanner\software\Sprint_1_ver_2\Sprint_1_ver_2.elf"/>
+<stringAttribute key="elfFile" value="C:\Users\Sathya\Desktop\Schoolwork\Year3\Term2\CPEN391\CPEN391Group7\Sprint2_Final\software\Sprint_1_ver_2\Sprint_1_ver_2.elf"/>
 <stringAttribute key="org.eclipse.cdt.debug.mi.core.GDB_INIT" value=""/>
 <stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_ID" value="com.altera.debug.cdi.gdb.plugin.Nios2GdbCdiDebugger"/>
 <stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_START_MODE" value="run"/>

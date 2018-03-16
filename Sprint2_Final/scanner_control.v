@@ -206,7 +206,6 @@ always @(posedge kbd_data_ready /*or negedge READY1*/) begin
 			character_E: scanned_barcode = scanned_barcode*16 + 14;
 			character_F: scanned_barcode = scanned_barcode*16 + 15;
 			character_R: scanned_barcode = 0;
-			//character_enter: begin while (HASH_START != 1);
 			default: scanned_barcode = scanned_barcode;
 		endcase
 		
@@ -262,7 +261,7 @@ always @(posedge kbd_data_ready /*or negedge READY1*/) begin
 		if (READY == 0) scanned_barcode = 0;
 	end*/
 	
-always @(posedge CLK_50M) begin
+/*always @(posedge CLK_50M) begin
 	HASH_START <= 0;
 	case(kbd_received_ascii_code)
 		character_enter: if (READY1 == 1 && scanned_barcode[7:0] != LED[7:0]) begin
@@ -276,6 +275,23 @@ always @(posedge CLK_50M) begin
 		default: LED[7:0] = LED[7:0];
 	endcase
 	
+	end*/
+	
+reg [9:0] counter;
+	
+always @(negedge PS2_CLK) begin
+	counter = counter + 1;
+	if (counter == 396) begin
+		SEND_TO_SHA[31:0] = scanned_barcode[31:0];
+		LED[7:0] = scanned_barcode[7:0];
+		counter = 0;
+		end
+	end
+	
+always @(posedge CLK_50M) begin
+	if (counter == 396)
+		HASH_START = 1;
+	else HASH_START = 0;
 	end
 	
 	

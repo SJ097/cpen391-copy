@@ -3,163 +3,171 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1100mV 85C Model Setup 'CLOCK_50'
-Slack : -50.875
-TNS   : -4797.586
+Slack : -61.591
+TNS   : -6024.006
 
 Type  : Slow 1100mV 85C Model Setup 'clk_vga'
-Slack : -13.268
-TNS   : -323.827
+Slack : -13.302
+TNS   : -323.890
 
 Type  : Slow 1100mV 85C Model Setup 'inst4|inst6|pll30mhz_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : -4.093
-TNS   : -4.093
+Slack : -4.442
+TNS   : -4.442
 
 Type  : Slow 1100mV 85C Model Setup 'clk_dram'
-Slack : -3.336
-TNS   : -117.148
+Slack : -3.334
+TNS   : -117.603
 
 Type  : Slow 1100mV 85C Model Setup 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 2.886
-TNS   : 0.000
-
-Type  : Slow 1100mV 85C Model Setup 'Graphics_and_Video_Controller:inst4|GraphicsController:inst4|CurrentState[0]'
-Slack : 9.514
-TNS   : 0.000
-
-Type  : Slow 1100mV 85C Model Setup 'NIOS_II_SYSTEM:inst3|nios_system:NiosII|nios_system_to_external_bus_bridge_0:to_external_bus_bridge_0|address[10]'
-Slack : 11.054
+Slack : 1.649
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Setup 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 11.225
+Slack : 9.313
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'Graphics_and_Video_Controller:inst4|GraphicsController:inst4|CurrentState[0]'
+Slack : 9.410
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Setup 'altera_reserved_tck'
-Slack : 12.030
+Slack : 12.349
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'NIOS_II_SYSTEM:inst3|nios_system:NiosII|nios_system_to_external_bus_bridge_0:to_external_bus_bridge_0|address[10]'
+Slack : 12.498
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Setup 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[9]'
-Slack : 14.358
+Slack : 13.715
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Setup 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 16.008
+Slack : 14.746
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Setup 'PS2_CLK'
+Slack : 24.253
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Setup 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : 33.776
+Slack : 33.657
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Setup 'Graphics_and_Video_Controller:inst4|LCD_Controller:inst9|V_Clock'
-Slack : 34.214
+Slack : 34.311
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : -3.903
-TNS   : -60.882
+Slack : -3.902
+TNS   : -61.098
 
 Type  : Slow 1100mV 85C Model Hold 'CLOCK_50'
-Slack : -2.607
-TNS   : -39.108
+Slack : -2.778
+TNS   : -41.624
 
 Type  : Slow 1100mV 85C Model Hold 'inst4|inst6|pll30mhz_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : -0.135
-TNS   : -0.135
+Slack : -0.132
+TNS   : -0.132
+
+Type  : Slow 1100mV 85C Model Hold 'altera_reserved_tck'
+Slack : 0.113
+TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : 0.268
+Slack : 0.434
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 0.375
+Slack : 0.553
 TNS   : 0.000
 
-Type  : Slow 1100mV 85C Model Hold 'altera_reserved_tck'
-Slack : 0.428
+Type  : Slow 1100mV 85C Model Hold 'PS2_CLK'
+Slack : 0.577
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 0.729
-TNS   : 0.000
-
-Type  : Slow 1100mV 85C Model Hold 'Graphics_and_Video_Controller:inst4|LCD_Controller:inst9|V_Clock'
-Slack : 0.846
+Slack : 0.583
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'Graphics_and_Video_Controller:inst4|GraphicsController:inst4|CurrentState[0]'
-Slack : 1.516
+Slack : 0.771
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'Graphics_and_Video_Controller:inst4|LCD_Controller:inst9|V_Clock'
+Slack : 1.233
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'clk_vga'
-Slack : 4.189
+Slack : 3.870
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'NIOS_II_SYSTEM:inst3|nios_system:NiosII|nios_system_to_external_bus_bridge_0:to_external_bus_bridge_0|address[10]'
-Slack : 5.638
+Slack : 4.314
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'clk_dram'
-Slack : 9.047
+Slack : 9.065
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[9]'
-Slack : 20.953
+Slack : 20.963
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Recovery 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 3.251
+Slack : 4.287
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Recovery 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : 5.448
+Slack : 4.307
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Recovery 'CLOCK_50'
-Slack : 6.642
+Slack : 5.075
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Recovery 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[5]'
-Slack : 9.664
-TNS   : 0.000
-
-Type  : Slow 1100mV 85C Model Recovery 'altera_reserved_tck'
-Slack : 14.265
+Slack : 12.764
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Recovery 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 14.689
+Slack : 14.336
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'altera_reserved_tck'
+Slack : 14.791
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Recovery 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 32.109
+Slack : 30.673
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Removal 'CLOCK_50'
-Slack : 0.394
-TNS   : 0.000
-
-Type  : Slow 1100mV 85C Model Removal 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 0.546
+Slack : 0.393
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Removal 'altera_reserved_tck'
-Slack : 0.787
+Slack : 0.677
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.849
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Removal 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 1.294
+Slack : 2.564
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Removal 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 2.357
+Slack : 3.740
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Removal 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[5]'
-Slack : 6.889
+Slack : 4.489
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Removal 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : 12.740
+Slack : 13.520
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
@@ -171,11 +179,11 @@ Slack : 1.666
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 8.763
+Slack : 8.759
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
-Slack : 8.857
+Slack : 8.835
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'
@@ -183,203 +191,215 @@ Slack : 9.846
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 15.691
+Slack : 15.737
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'inst4|inst6|pll30mhz_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
 Slack : 15.862
 TNS   : 0.000
 
-Type  : Slow 1100mV 85C Model Minimum Pulse Width 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 19.161
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
+Slack : 19.094
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 19.172
+Slack : 19.104
 TNS   : 0.000
 
-Type  : Slow 1100mV 85C Model Minimum Pulse Width 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : 19.212
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
+Slack : 19.205
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Graphics_and_Video_Controller:inst4|LCD_Controller:inst9|V_Clock'
-Slack : 19.262
+Slack : 19.295
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'PS2_CLK'
+Slack : 19.366
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[9]'
-Slack : 19.349
+Slack : 19.383
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[5]'
-Slack : 19.388
+Slack : 19.435
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'NIOS_II_SYSTEM:inst3|nios_system:NiosII|nios_system_to_external_bus_bridge_0:to_external_bus_bridge_0|address[10]'
-Slack : 19.756
+Slack : 19.733
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'Graphics_and_Video_Controller:inst4|GraphicsController:inst4|CurrentState[0]'
-Slack : 19.788
+Slack : 19.765
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Setup 'CLOCK_50'
-Slack : -51.338
-TNS   : -4087.513
+Slack : -60.916
+TNS   : -5166.116
 
 Type  : Slow 1100mV 0C Model Setup 'clk_vga'
-Slack : -13.032
-TNS   : -317.692
+Slack : -13.069
+TNS   : -317.989
 
 Type  : Slow 1100mV 0C Model Setup 'inst4|inst6|pll30mhz_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : -3.473
-TNS   : -3.473
+Slack : -3.886
+TNS   : -3.886
 
 Type  : Slow 1100mV 0C Model Setup 'clk_dram'
-Slack : -3.198
-TNS   : -112.144
+Slack : -3.195
+TNS   : -112.566
 
 Type  : Slow 1100mV 0C Model Setup 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 3.562
+Slack : 2.535
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Setup 'Graphics_and_Video_Controller:inst4|GraphicsController:inst4|CurrentState[0]'
-Slack : 9.385
-TNS   : 0.000
-
-Type  : Slow 1100mV 0C Model Setup 'NIOS_II_SYSTEM:inst3|nios_system:NiosII|nios_system_to_external_bus_bridge_0:to_external_bus_bridge_0|address[10]'
-Slack : 11.076
+Slack : 9.224
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Setup 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 11.119
+Slack : 9.397
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Setup 'altera_reserved_tck'
-Slack : 12.155
+Slack : 12.522
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'NIOS_II_SYSTEM:inst3|nios_system:NiosII|nios_system_to_external_bus_bridge_0:to_external_bus_bridge_0|address[10]'
+Slack : 12.586
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Setup 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[9]'
-Slack : 14.507
+Slack : 13.924
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Setup 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 15.924
+Slack : 14.732
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Setup 'PS2_CLK'
+Slack : 23.991
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Setup 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : 34.024
+Slack : 33.905
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Setup 'Graphics_and_Video_Controller:inst4|LCD_Controller:inst9|V_Clock'
-Slack : 34.397
+Slack : 34.394
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : -4.198
-TNS   : -65.577
+Slack : -4.195
+TNS   : -65.779
 
 Type  : Slow 1100mV 0C Model Hold 'CLOCK_50'
-Slack : -2.655
-TNS   : -47.710
+Slack : -2.852
+TNS   : -47.025
 
 Type  : Slow 1100mV 0C Model Hold 'inst4|inst6|pll30mhz_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : -0.785
-TNS   : -0.785
+Slack : -0.653
+TNS   : -0.653
+
+Type  : Slow 1100mV 0C Model Hold 'altera_reserved_tck'
+Slack : 0.105
+TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : 0.210
+Slack : 0.479
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 0.362
-TNS   : 0.000
-
-Type  : Slow 1100mV 0C Model Hold 'altera_reserved_tck'
-Slack : 0.445
+Slack : 0.603
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 0.736
-TNS   : 0.000
-
-Type  : Slow 1100mV 0C Model Hold 'Graphics_and_Video_Controller:inst4|LCD_Controller:inst9|V_Clock'
-Slack : 0.826
+Slack : 0.625
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'Graphics_and_Video_Controller:inst4|GraphicsController:inst4|CurrentState[0]'
-Slack : 1.461
+Slack : 0.631
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'PS2_CLK'
+Slack : 0.666
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'Graphics_and_Video_Controller:inst4|LCD_Controller:inst9|V_Clock'
+Slack : 1.201
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'clk_vga'
-Slack : 3.823
+Slack : 3.512
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'NIOS_II_SYSTEM:inst3|nios_system:NiosII|nios_system_to_external_bus_bridge_0:to_external_bus_bridge_0|address[10]'
-Slack : 5.691
+Slack : 4.320
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'clk_dram'
-Slack : 8.985
+Slack : 9.002
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[9]'
-Slack : 20.974
-TNS   : 0.000
-
-Type  : Slow 1100mV 0C Model Recovery 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 3.505
+Slack : 20.923
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Recovery 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : 5.442
+Slack : 4.346
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
+Slack : 4.473
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Recovery 'CLOCK_50'
-Slack : 6.732
+Slack : 5.223
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Recovery 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[5]'
-Slack : 10.106
-TNS   : 0.000
-
-Type  : Slow 1100mV 0C Model Recovery 'altera_reserved_tck'
-Slack : 14.394
+Slack : 13.025
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Recovery 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 14.929
+Slack : 14.581
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'altera_reserved_tck'
+Slack : 14.885
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Recovery 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 32.334
+Slack : 30.926
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Removal 'CLOCK_50'
 Slack : 0.396
 TNS   : 0.000
 
-Type  : Slow 1100mV 0C Model Removal 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 0.483
+Type  : Slow 1100mV 0C Model Removal 'altera_reserved_tck'
+Slack : 0.606
 TNS   : 0.000
 
-Type  : Slow 1100mV 0C Model Removal 'altera_reserved_tck'
-Slack : 0.744
+Type  : Slow 1100mV 0C Model Removal 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.805
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Removal 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 1.265
+Slack : 2.529
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Removal 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 2.224
+Slack : 3.578
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Removal 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[5]'
-Slack : 6.575
+Slack : 4.341
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Removal 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : 12.805
+Slack : 13.527
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
@@ -391,7 +411,7 @@ Slack : 1.666
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 8.749
+Slack : 8.739
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'CLOCK_50'
@@ -403,203 +423,215 @@ Slack : 9.814
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 15.703
+Slack : 15.734
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'inst4|inst6|pll30mhz_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
 Slack : 15.847
 TNS   : 0.000
 
-Type  : Slow 1100mV 0C Model Minimum Pulse Width 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 19.176
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
+Slack : 19.102
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 19.178
-TNS   : 0.000
-
-Type  : Slow 1100mV 0C Model Minimum Pulse Width 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : 19.222
+Slack : 19.119
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Graphics_and_Video_Controller:inst4|LCD_Controller:inst9|V_Clock'
-Slack : 19.245
+Slack : 19.259
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
+Slack : 19.261
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'PS2_CLK'
+Slack : 19.321
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[9]'
-Slack : 19.358
+Slack : 19.370
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[5]'
-Slack : 19.374
+Slack : 19.440
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'NIOS_II_SYSTEM:inst3|nios_system:NiosII|nios_system_to_external_bus_bridge_0:to_external_bus_bridge_0|address[10]'
-Slack : 19.729
+Slack : 19.733
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'Graphics_and_Video_Controller:inst4|GraphicsController:inst4|CurrentState[0]'
-Slack : 19.803
+Slack : 19.770
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Setup 'CLOCK_50'
-Slack : -21.878
-TNS   : -1358.180
+Slack : -28.427
+TNS   : -1751.094
 
 Type  : Fast 1100mV 85C Model Setup 'clk_vga'
-Slack : -8.485
-TNS   : -201.332
+Slack : -8.299
+TNS   : -200.100
 
 Type  : Fast 1100mV 85C Model Setup 'inst4|inst6|pll30mhz_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : -3.262
-TNS   : -3.262
+Slack : -3.413
+TNS   : -3.413
 
 Type  : Fast 1100mV 85C Model Setup 'clk_dram'
-Slack : 1.536
+Slack : 1.541
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Setup 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 5.463
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Setup 'Graphics_and_Video_Controller:inst4|GraphicsController:inst4|CurrentState[0]'
-Slack : 14.019
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Setup 'altera_reserved_tck'
-Slack : 14.029
+Slack : 5.411
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Setup 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 14.476
+Slack : 13.047
 TNS   : 0.000
 
-Type  : Fast 1100mV 85C Model Setup 'NIOS_II_SYSTEM:inst3|nios_system:NiosII|nios_system_to_external_bus_bridge_0:to_external_bus_bridge_0|address[10]'
-Slack : 14.877
+Type  : Fast 1100mV 85C Model Setup 'Graphics_and_Video_Controller:inst4|GraphicsController:inst4|CurrentState[0]'
+Slack : 13.974
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'altera_reserved_tck'
+Slack : 14.216
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Setup 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[9]'
-Slack : 16.289
+Slack : 15.686
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'NIOS_II_SYSTEM:inst3|nios_system:NiosII|nios_system_to_external_bus_bridge_0:to_external_bus_bridge_0|address[10]'
+Slack : 15.763
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Setup 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 17.663
+Slack : 16.704
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Setup 'PS2_CLK'
+Slack : 22.258
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Setup 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : 35.425
+Slack : 35.475
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Setup 'Graphics_and_Video_Controller:inst4|LCD_Controller:inst9|V_Clock'
-Slack : 35.937
+Slack : 36.351
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : -1.768
-TNS   : -27.208
+Slack : -1.764
+TNS   : -27.354
 
 Type  : Fast 1100mV 85C Model Hold 'CLOCK_50'
-Slack : -1.552
-TNS   : -22.933
+Slack : -1.583
+TNS   : -24.249
+
+Type  : Fast 1100mV 85C Model Hold 'altera_reserved_tck'
+Slack : 0.011
+TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : -0.095
-TNS   : -0.614
+Slack : 0.049
+TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'inst4|inst6|pll30mhz_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 0.072
+Slack : 0.094
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 0.122
+Slack : 0.220
 TNS   : 0.000
 
-Type  : Fast 1100mV 85C Model Hold 'altera_reserved_tck'
-Slack : 0.157
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Hold 'Graphics_and_Video_Controller:inst4|LCD_Controller:inst9|V_Clock'
-Slack : 0.407
+Type  : Fast 1100mV 85C Model Hold 'PS2_CLK'
+Slack : 0.285
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 0.462
+Slack : 0.344
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'Graphics_and_Video_Controller:inst4|LCD_Controller:inst9|V_Clock'
+Slack : 0.622
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'Graphics_and_Video_Controller:inst4|GraphicsController:inst4|CurrentState[0]'
-Slack : 1.017
+Slack : 0.624
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'clk_vga'
-Slack : 1.936
+Slack : 1.703
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'NIOS_II_SYSTEM:inst3|nios_system:NiosII|nios_system_to_external_bus_bridge_0:to_external_bus_bridge_0|address[10]'
-Slack : 3.176
+Slack : 2.411
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'clk_dram'
-Slack : 5.014
+Slack : 5.027
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[9]'
-Slack : 20.480
+Slack : 20.449
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Recovery 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 5.414
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Recovery 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : 6.944
+Slack : 6.051
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Recovery 'CLOCK_50'
-Slack : 7.297
+Slack : 6.169
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
+Slack : 6.212
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Recovery 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[5]'
-Slack : 13.295
+Slack : 15.293
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Recovery 'altera_reserved_tck'
-Slack : 15.435
+Slack : 15.719
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Recovery 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 16.595
+Slack : 16.346
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Recovery 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 34.400
+Slack : 33.730
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Removal 'CLOCK_50'
-Slack : 0.247
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Removal 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 0.324
+Slack : 0.246
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Removal 'altera_reserved_tck'
-Slack : 0.350
+Slack : 0.319
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.469
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Removal 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 0.667
+Slack : 1.412
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Removal 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 0.927
+Slack : 1.916
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Removal 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[5]'
-Slack : 3.992
+Slack : 2.539
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Removal 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : 11.657
+Slack : 12.116
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
@@ -611,11 +643,11 @@ Slack : 1.666
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
-Slack : 8.782
+Slack : 8.783
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 8.886
+Slack : 8.882
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'
@@ -623,203 +655,215 @@ Slack : 9.907
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 15.682
+Slack : 15.727
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'inst4|inst6|pll30mhz_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
 Slack : 16.208
 TNS   : 0.000
 
-Type  : Fast 1100mV 85C Model Minimum Pulse Width 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 19.371
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Minimum Pulse Width 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 19.421
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'PS2_CLK'
+Slack : 19.215
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : 19.451
+Slack : 19.337
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'sha_block:inst|sha:inst|current_state.DONE'
+Slack : 19.372
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
+Slack : 19.469
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Graphics_and_Video_Controller:inst4|LCD_Controller:inst9|V_Clock'
-Slack : 19.464
+Slack : 19.492
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[9]'
-Slack : 19.572
+Slack : 19.628
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[5]'
-Slack : 19.629
+Slack : 19.650
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'NIOS_II_SYSTEM:inst3|nios_system:NiosII|nios_system_to_external_bus_bridge_0:to_external_bus_bridge_0|address[10]'
-Slack : 19.791
+Slack : 19.760
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'Graphics_and_Video_Controller:inst4|GraphicsController:inst4|CurrentState[0]'
-Slack : 19.888
+Slack : 19.847
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'CLOCK_50'
-Slack : -18.478
-TNS   : -1143.207
+Slack : -24.606
+TNS   : -1513.147
 
 Type  : Fast 1100mV 0C Model Setup 'clk_vga'
-Slack : -7.977
-TNS   : -189.889
+Slack : -7.805
+TNS   : -188.516
 
 Type  : Fast 1100mV 0C Model Setup 'inst4|inst6|pll30mhz_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : -2.501
-TNS   : -2.501
+Slack : -2.670
+TNS   : -2.670
 
 Type  : Fast 1100mV 0C Model Setup 'clk_dram'
-Slack : 1.829
+Slack : 1.831
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 6.172
-TNS   : 0.000
-
-Type  : Fast 1100mV 0C Model Setup 'altera_reserved_tck'
-Slack : 14.325
-TNS   : 0.000
-
-Type  : Fast 1100mV 0C Model Setup 'Graphics_and_Video_Controller:inst4|GraphicsController:inst4|CurrentState[0]'
-Slack : 14.352
+Slack : 6.032
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 14.822
+Slack : 13.616
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'Graphics_and_Video_Controller:inst4|GraphicsController:inst4|CurrentState[0]'
+Slack : 14.346
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'altera_reserved_tck'
+Slack : 14.515
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'NIOS_II_SYSTEM:inst3|nios_system:NiosII|nios_system_to_external_bus_bridge_0:to_external_bus_bridge_0|address[10]'
-Slack : 15.071
+Slack : 15.872
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[9]'
-Slack : 16.635
+Slack : 16.131
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 17.675
+Slack : 16.865
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Setup 'PS2_CLK'
+Slack : 22.417
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : 35.961
+Slack : 36.002
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'Graphics_and_Video_Controller:inst4|LCD_Controller:inst9|V_Clock'
-Slack : 36.394
+Slack : 36.687
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : -2.216
-TNS   : -34.391
+Slack : -2.213
+TNS   : -34.513
 
 Type  : Fast 1100mV 0C Model Hold 'CLOCK_50'
-Slack : -1.546
-TNS   : -42.499
+Slack : -1.578
+TNS   : -45.890
 
 Type  : Fast 1100mV 0C Model Hold 'inst4|inst6|pll30mhz_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : -0.469
-TNS   : -0.469
-
-Type  : Fast 1100mV 0C Model Hold 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : -0.117
-TNS   : -1.074
-
-Type  : Fast 1100mV 0C Model Hold 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 0.118
-TNS   : 0.000
+Slack : -0.391
+TNS   : -0.391
 
 Type  : Fast 1100mV 0C Model Hold 'altera_reserved_tck'
-Slack : 0.145
+Slack : 0.004
 TNS   : 0.000
 
-Type  : Fast 1100mV 0C Model Hold 'Graphics_and_Video_Controller:inst4|LCD_Controller:inst9|V_Clock'
-Slack : 0.364
+Type  : Fast 1100mV 0C Model Hold 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
+Slack : 0.036
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'sha_block:inst|sha:inst|current_state.DONE'
+Slack : 0.219
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'PS2_CLK'
+Slack : 0.293
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 0.421
+Slack : 0.322
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'Graphics_and_Video_Controller:inst4|GraphicsController:inst4|CurrentState[0]'
-Slack : 0.907
+Slack : 0.528
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'Graphics_and_Video_Controller:inst4|LCD_Controller:inst9|V_Clock'
+Slack : 0.571
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'clk_vga'
-Slack : 1.593
+Slack : 1.367
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'NIOS_II_SYSTEM:inst3|nios_system:NiosII|nios_system_to_external_bus_bridge_0:to_external_bus_bridge_0|address[10]'
-Slack : 3.148
+Slack : 2.418
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'clk_dram'
-Slack : 4.789
+Slack : 4.801
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[9]'
-Slack : 20.385
+Slack : 20.369
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Recovery 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 5.749
+Slack : 6.306
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Recovery 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : 7.015
+Slack : 6.378
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Recovery 'CLOCK_50'
-Slack : 7.491
+Slack : 6.513
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Recovery 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[5]'
-Slack : 13.953
+Slack : 15.672
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Recovery 'altera_reserved_tck'
-Slack : 15.588
+Slack : 15.855
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Recovery 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 16.927
+Slack : 16.711
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Recovery 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 35.064
+Slack : 34.476
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Removal 'CLOCK_50'
 Slack : 0.232
 TNS   : 0.000
 
-Type  : Fast 1100mV 0C Model Removal 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 0.269
+Type  : Fast 1100mV 0C Model Removal 'altera_reserved_tck'
+Slack : 0.278
 TNS   : 0.000
 
-Type  : Fast 1100mV 0C Model Removal 'altera_reserved_tck'
-Slack : 0.312
+Type  : Fast 1100mV 0C Model Removal 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
+Slack : 0.426
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Removal 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 0.586
+Slack : 1.261
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Removal 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 0.878
+Slack : 1.806
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Removal 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[5]'
-Slack : 3.618
+Slack : 2.362
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Removal 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : 11.642
+Slack : 12.031
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'
@@ -835,7 +879,7 @@ Slack : 8.777
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
-Slack : 8.885
+Slack : 8.881
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'inst3|NiosII|clocks|sys_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'
@@ -843,43 +887,47 @@ Slack : 9.903
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 15.722
+Slack : 15.746
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'inst4|inst6|pll30mhz_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'
 Slack : 16.203
 TNS   : 0.000
 
-Type  : Fast 1100mV 0C Model Minimum Pulse Width 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
-Slack : 19.398
-TNS   : 0.000
-
-Type  : Fast 1100mV 0C Model Minimum Pulse Width 'sha_block:inst|sha:inst|current_state.DONE'
-Slack : 19.469
-TNS   : 0.000
-
-Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Graphics_and_Video_Controller:inst4|LCD_Controller:inst9|V_Clock'
-Slack : 19.494
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'PS2_CLK'
+Slack : 19.173
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'scanner_control:inst2|Kbd_ctrl:Kbd_Controller|data_ready'
-Slack : 19.495
+Slack : 19.402
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'sha_block:inst|sha:inst|current_state.DONE'
+Slack : 19.429
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'scanner_control:inst2|doublesync:ps2c_doublsync|reg2'
+Slack : 19.488
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Graphics_and_Video_Controller:inst4|LCD_Controller:inst9|V_Clock'
+Slack : 19.499
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[9]'
-Slack : 19.592
+Slack : 19.628
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'scanner_control:inst2|Write_Kbd_To_Scope_LCD:Write_Kbd_To_LCD1|state[5]'
-Slack : 19.630
+Slack : 19.653
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'NIOS_II_SYSTEM:inst3|nios_system:NiosII|nios_system_to_external_bus_bridge_0:to_external_bus_bridge_0|address[10]'
-Slack : 19.807
+Slack : 19.800
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'Graphics_and_Video_Controller:inst4|GraphicsController:inst4|CurrentState[0]'
-Slack : 19.901
+Slack : 19.861
 TNS   : 0.000
 
 ------------------------------------------------------------

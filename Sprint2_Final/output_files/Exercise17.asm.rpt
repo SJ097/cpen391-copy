@@ -1,5 +1,5 @@
 Assembler report for Exercise17
-Thu Feb 15 00:32:54 2018
+Thu Mar 15 16:56:52 2018
 Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
 
 
@@ -11,7 +11,7 @@ Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
   3. Assembler Settings
   4. Assembler Encrypted IP Cores Summary
   5. Assembler Generated Files
-  6. Assembler Device Options: C:/Users/Sathya/Desktop/Schoolwork/Year3/Term2/CPEN391/Sprint_2Scanner/output_files/Exercise17.sof
+  6. Assembler Device Options: C:/Users/Sathya/Desktop/Schoolwork/Year3/Term2/CPEN391/CPEN391Group7/Sprint2_Final/output_files/Exercise17.sof
   7. Assembler Messages
 
 
@@ -39,7 +39,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Thu Feb 15 00:32:54 2018 ;
+; Assembler Status      ; Successful - Thu Mar 15 16:56:52 2018 ;
 ; Revision Name         ; Exercise17                            ;
 ; Top-level Entity Name ; Exercise14                            ;
 ; Family                ; Cyclone V                             ;
@@ -64,24 +64,24 @@ agreement for further details.
 +--------+------------------------+--------------+
 
 
-+----------------------------------------------------------------------------------------------------+
-; Assembler Generated Files                                                                          ;
-+----------------------------------------------------------------------------------------------------+
-; File Name                                                                                          ;
-+----------------------------------------------------------------------------------------------------+
-; C:/Users/Sathya/Desktop/Schoolwork/Year3/Term2/CPEN391/Sprint_2Scanner/output_files/Exercise17.sof ;
-+----------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------+
+; Assembler Generated Files                                                                                      ;
++----------------------------------------------------------------------------------------------------------------+
+; File Name                                                                                                      ;
++----------------------------------------------------------------------------------------------------------------+
+; C:/Users/Sathya/Desktop/Schoolwork/Year3/Term2/CPEN391/CPEN391Group7/Sprint2_Final/output_files/Exercise17.sof ;
++----------------------------------------------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/Sathya/Desktop/Schoolwork/Year3/Term2/CPEN391/Sprint_2Scanner/output_files/Exercise17.sof ;
-+----------------+-------------------------------------------------------------------------------------------------------------+
-; Option         ; Setting                                                                                                     ;
-+----------------+-------------------------------------------------------------------------------------------------------------+
-; Device         ; 5CSEMA5F31C6                                                                                                ;
-; JTAG usercode  ; 0x096004E3                                                                                                  ;
-; Checksum       ; 0x096004E3                                                                                                  ;
-+----------------+-------------------------------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Assembler Device Options: C:/Users/Sathya/Desktop/Schoolwork/Year3/Term2/CPEN391/CPEN391Group7/Sprint2_Final/output_files/Exercise17.sof ;
++----------------+-------------------------------------------------------------------------------------------------------------------------+
+; Option         ; Setting                                                                                                                 ;
++----------------+-------------------------------------------------------------------------------------------------------------------------+
+; Device         ; 5CSEMA5F31C6                                                                                                            ;
+; JTAG usercode  ; 0x095CEE6F                                                                                                              ;
+; Checksum       ; 0x095CEE6F                                                                                                              ;
++----------------+-------------------------------------------------------------------------------------------------------------------------+
 
 
 +--------------------+
@@ -90,14 +90,14 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 15.0.0 Build 145 04/22/2015 SJ Web Edition
-    Info: Processing started: Thu Feb 15 00:32:20 2018
+    Info: Processing started: Thu Mar 15 16:56:15 2018
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off Exercise14 -c Exercise17
 Info (115030): Assembler is generating device programming files
 Warning (12914): The file, C:/Users/Sathya/Desktop/Schoolwork/Year3/Term2/CPEN391/Sprint_2 with Scanner/nios_system.sopcinfo, is not embedded into sof file as expected.  Some tools, such as System Console, may not function fully.
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 966 megabytes
-    Info: Processing ended: Thu Feb 15 00:32:54 2018
-    Info: Elapsed time: 00:00:34
+    Info: Peak virtual memory: 970 megabytes
+    Info: Processing ended: Thu Mar 15 16:56:52 2018
+    Info: Elapsed time: 00:00:37
     Info: Total CPU time (on all processors): 00:00:32
 
 
