@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_person"
+            android:title="Change User Information" />
+        <item
+            android:id="@+id/password"
+            android:icon="@drawable/ic_settings"
+            android:title="Change Password" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_logout"
+            android:title="Log Out" />
+    </group>
+</menu>
