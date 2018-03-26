@@ -1,5 +1,6 @@
 package com.example.flightbooker.Map;
 
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,11 +11,12 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
+import com.example.flightbooker.DisplaySuccessActivity;
 import com.example.flightbooker.R;
 
 public class MapActivity extends AppCompatActivity {
 
-    private ImageButton button;
+    private ImageButton button,backButton;
     private TouchImageView img;
     private ScrollView detailView;
     private LinearLayout venueMenu;
@@ -36,6 +38,15 @@ public class MapActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 detailView.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        backButton = findViewById(R.id.map_back_button);
+        backButton.bringToFront();
+        backButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(MapActivity.this, DisplaySuccessActivity.class));
             }
         });
 

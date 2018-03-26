@@ -121,8 +121,6 @@ public class DisplaySuccessActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(DisplaySuccessActivity.this, MapActivity.class));
-                // Matt add your code here
-                //startActivity(new Intent(DisplaySuccessActivity.this, UserInfoActivity.class));
             }
         });
 
