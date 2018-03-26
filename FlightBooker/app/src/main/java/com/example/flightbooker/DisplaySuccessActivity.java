@@ -1,10 +1,8 @@
 package com.example.flightbooker;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.provider.Settings;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,11 +10,12 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.flightbooker.Map.MapActivity;
 
 public class DisplaySuccessActivity extends AppCompatActivity {
 
@@ -121,6 +120,7 @@ public class DisplaySuccessActivity extends AppCompatActivity {
         airport_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(DisplaySuccessActivity.this, MapActivity.class));
                 // Matt add your code here
                 //startActivity(new Intent(DisplaySuccessActivity.this, UserInfoActivity.class));
             }
