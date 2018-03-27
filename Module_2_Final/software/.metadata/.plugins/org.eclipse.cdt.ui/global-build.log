@@ -1,0 +1,463 @@
+15:34:53 **** Build of configuration Nios II for project Sprint_1_ver_2 ****
+make all 
+Info: Building ../Sprint_1_ver_2_bsp/
+C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../Sprint_1_ver_2_bsp/
+[BSP build complete]
+Info: Compiling ColourPallette.c to obj/default/ColourPallette.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/ColourPallette.o ColourPallette.c
+Info: Compiling Draw.c to obj/default/Draw.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/Draw.o Draw.c
+Draw.c: In function 'DrawScreen':
+Draw.c:20:3: warning: implicit declaration of function 'DrawLineAcc' [-Wimplicit-function-declaration]
+   DrawLineAcc(X, Y+j, dimX, data);
+   ^
+Draw.c:26:3: warning: implicit declaration of function 'addBtn' [-Wimplicit-function-declaration]
+   addBtn(X,x2,Y,y2,fptr);
+   ^
+Draw.c:14:9: warning: unused variable 'rgb' [-Wunused-variable]
+  int j, rgb, x2, y2;
+         ^
+Info: Compiling Fill.c to obj/default/Fill.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/Fill.o Fill.c
+Fill.c: In function 'Fill':
+Fill.c:68:9: warning: implicit declaration of function 'WriteAPixel' [-Wimplicit-function-declaration]
+         WriteAPixel(x, y, FillColour);     // fill the point in the fill colour
+         ^
+Fill.c:73:9: warning: implicit declaration of function 'ReadAPixel' [-Wimplicit-function-declaration]
+         while((char)(ReadAPixel(x,y)) != (char)(BoundaryColour))       // if new pixel is not the boundary colour
+         ^
+Info: Compiling Fonts.c to obj/default/Fonts.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/Fonts.o Fonts.c
+Info: Compiling GPS.c to obj/default/GPS.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/GPS.o GPS.c
+Info: Compiling KeyPad.c to obj/default/KeyPad.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/KeyPad.o KeyPad.c
+KeyPad.c: In function 'Key0Pressed':
+KeyPad.c:26:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  printf("Current val: %s", security_code);
+  ^
+KeyPad.c:26:2: warning: incompatible implicit declaration of built-in function 'printf'
+KeyPad.c:27:2: warning: implicit declaration of function 'DrawDot' [-Wimplicit-function-declaration]
+  DrawDot();
+  ^
+KeyPad.c: In function 'Key1Pressed':
+KeyPad.c:35:2: warning: incompatible implicit declaration of built-in function 'printf'
+  printf("Current val: %s", security_code);
+  ^
+KeyPad.c: In function 'Key2Pressed':
+KeyPad.c:44:2: warning: incompatible implicit declaration of built-in function 'printf'
+  printf("Current val: %s", security_code);
+  ^
+KeyPad.c: In function 'Key3Pressed':
+KeyPad.c:53:2: warning: incompatible implicit declaration of built-in function 'printf'
+  printf("Current val: %s", security_code);
+  ^
+KeyPad.c: In function 'Key4Pressed':
+KeyPad.c:62:2: warning: incompatible implicit declaration of built-in function 'printf'
+  printf("Current val: %s", security_code);
+  ^
+KeyPad.c: In function 'Key5Pressed':
+KeyPad.c:71:2: warning: incompatible implicit declaration of built-in function 'printf'
+  printf("Current val: %s", security_code);
+  ^
+KeyPad.c: In function 'Key6Pressed':
+KeyPad.c:80:2: warning: incompatible implicit declaration of built-in function 'printf'
+  printf("Current val: %s", security_code);
+  ^
+KeyPad.c: In function 'Key7Pressed':
+KeyPad.c:89:2: warning: incompatible implicit declaration of built-in function 'printf'
+  printf("Current val: %s", security_code);
+  ^
+KeyPad.c: In function 'Key8Pressed':
+KeyPad.c:98:2: warning: incompatible implicit declaration of built-in function 'printf'
+  printf("Current val: %s", security_code);
+  ^
+KeyPad.c: In function 'Key9Pressed':
+KeyPad.c:107:2: warning: incompatible implicit declaration of built-in function 'printf'
+  printf("Current val: %s", security_code);
+  ^
+KeyPad.c: In function 'KeyOkPressed':
+KeyPad.c:116:2: warning: implicit declaration of function 'CodeFourCharCheck' [-Wimplicit-function-declaration]
+  if(!CodeFourCharCheck())
+  ^
+KeyPad.c:121:3: warning: implicit declaration of function 'CodeMatchCheck' [-Wimplicit-function-declaration]
+   if(CodeMatchCheck())
+   ^
+KeyPad.c:124:4: warning: incompatible implicit declaration of built-in function 'printf'
+    printf("Key match!\n");
+    ^
+KeyPad.c:129:4: warning: implicit declaration of function 'snprintf' [-Wimplicit-function-declaration]
+    snprintf(AttemptsLeftMessage, sizeof(AttemptsLeftMessage), "%d attempts remaining", attempts);
+    ^
+KeyPad.c:129:4: warning: incompatible implicit declaration of built-in function 'snprintf'
+KeyPad.c:130:4: warning: implicit declaration of function 'OutGraphicsStringFont2' [-Wimplicit-function-declaration]
+    OutGraphicsStringFont2(50,400,12,16,AttemptsLeftMessage,1);
+    ^
+KeyPad.c:139:4: warning: incompatible implicit declaration of built-in function 'printf'
+    printf("Key match!\n");
+    ^
+KeyPad.c:151:3: warning: implicit declaration of function 'ClearDot' [-Wimplicit-function-declaration]
+   ClearDot();
+   ^
+KeyPad.c: In function 'KeyBackPressed':
+KeyPad.c:187:2: warning: incompatible implicit declaration of built-in function 'printf'
+  printf("Current val: %s", security_code);
+  ^
+KeyPad.c: In function 'DrawKeyPad':
+KeyPad.c:199:2: warning: implicit declaration of function 'DrawScreen' [-Wimplicit-function-declaration]
+  DrawScreen(key7, 88, 82, 415, 117, Key7Pressed);
+  ^
+KeyPad.c: At top level:
+KeyPad.c:220:6: warning: conflicting types for 'DrawDot'
+ void DrawDot(){
+      ^
+KeyPad.c:27:2: note: previous implicit declaration of 'DrawDot' was here
+  DrawDot();
+  ^
+KeyPad.c:226:6: warning: conflicting types for 'ClearDot'
+ void ClearDot(){
+      ^
+KeyPad.c:151:3: note: previous implicit declaration of 'ClearDot' was here
+   ClearDot();
+   ^
+Info: Compiling OutGraphicsCharFont1.c to obj/default/OutGraphicsCharFont1.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/OutGraphicsCharFont1.o OutGraphicsCharFont1.c
+OutGraphicsCharFont1.c: In function 'OutGraphicsCharFont1':
+OutGraphicsCharFont1.c:49:6: warning: implicit declaration of function 'WriteAPixel' [-Wimplicit-function-declaration]
+      WriteAPixel(theX+column, theY+row, theColour) ;
+      ^
+OutGraphicsCharFont1.c: In function 'OutGraphicsStringFont1':
+OutGraphicsCharFont1.c:68:2: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  for(i = 0; i < strlen(c); i++){
+  ^
+OutGraphicsCharFont1.c:68:17: warning: incompatible implicit declaration of built-in function 'strlen'
+  for(i = 0; i < strlen(c); i++){
+                 ^
+Info: Compiling OutGraphicsCharFont2.c to obj/default/OutGraphicsCharFont2.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/OutGraphicsCharFont2.o OutGraphicsCharFont2.c
+OutGraphicsCharFont2.c: In function 'OutGraphicsCharFont2':
+OutGraphicsCharFont2.c:51:6: warning: implicit declaration of function 'WriteAPixel' [-Wimplicit-function-declaration]
+      WriteAPixel(theX+column, theY+row, theColour) ;
+      ^
+OutGraphicsCharFont2.c:33:6: warning: unused variable 'j' [-Wunused-variable]
+      j,
+      ^
+OutGraphicsCharFont2.c: In function 'OutGraphicsStringFont2':
+OutGraphicsCharFont2.c:67:2: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  for(i = 0; i < strlen(c); i++){
+  ^
+OutGraphicsCharFont2.c:67:17: warning: incompatible implicit declaration of built-in function 'strlen'
+  for(i = 0; i < strlen(c); i++){
+                 ^
+Info: Compiling ProgressBar.c to obj/default/ProgressBar.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/ProgressBar.o ProgressBar.c
+ProgressBar.c: In function 'DrawProgress':
+ProgressBar.c:16:8: warning: assignment discards 'const' qualifier from pointer target type
+   data = prog1;
+        ^
+ProgressBar.c:18:8: warning: assignment discards 'const' qualifier from pointer target type
+   data = prog2;
+        ^
+ProgressBar.c:20:8: warning: assignment discards 'const' qualifier from pointer target type
+   data = prog3;
+        ^
+ProgressBar.c:23:2: warning: implicit declaration of function 'DrawScreen' [-Wimplicit-function-declaration]
+  DrawScreen(data, 343, 51, 238, 30, NULL);
+  ^
+Info: Compiling SHA256.c to obj/default/SHA256.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/SHA256.o SHA256.c
+SHA256.c: In function 'hashString':
+SHA256.c:29:2: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  for (i = 0; i < strlen(c); i++) {
+  ^
+SHA256.c:29:18: warning: incompatible implicit declaration of built-in function 'strlen'
+  for (i = 0; i < strlen(c); i++) {
+                  ^
+Info: Compiling ScreenErr.c to obj/default/ScreenErr.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/ScreenErr.o ScreenErr.c
+ScreenErr.c: In function 'ScreenErrLoad':
+ScreenErr.c:12:2: warning: implicit declaration of function 'ClearScreen' [-Wimplicit-function-declaration]
+  ClearScreen(16);
+  ^
+ScreenErr.c:13:2: warning: implicit declaration of function 'DrawScreen' [-Wimplicit-function-declaration]
+  DrawScreen(err, 259, 230, 270, 90, 0);
+  ^
+ScreenErr.c:17:3: warning: implicit declaration of function 'OutGraphicsStringFont2' [-Wimplicit-function-declaration]
+   OutGraphicsStringFont2(100,375,12,16,"No reservation is associated with that passport",1);
+   ^
+Info: Compiling ScreenOne.c to obj/default/ScreenOne.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/ScreenOne.o ScreenOne.c
+ScreenOne.c: In function 'ScreenOneLoad':
+ScreenOne.c:11:2: warning: implicit declaration of function 'ClearScreen' [-Wimplicit-function-declaration]
+  ClearScreen(16);
+  ^
+ScreenOne.c:12:2: warning: implicit declaration of function 'DrawProgress' [-Wimplicit-function-declaration]
+  DrawProgress(1);
+  ^
+ScreenOne.c:13:2: warning: implicit declaration of function 'DrawScreen' [-Wimplicit-function-declaration]
+  DrawScreen(passport, 229, 240, 285, 125);
+  ^
+ScreenOne.c:14:2: warning: implicit declaration of function 'OutGraphicsStringFont2' [-Wimplicit-function-declaration]
+  OutGraphicsStringFont2(235,415,0,16,"Please scan your passport",1);
+  ^
+Info: Compiling ScreenThree.c to obj/default/ScreenThree.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/ScreenThree.o ScreenThree.c
+ScreenThree.c: In function 'ScreenThreeLoad':
+ScreenThree.c:13:2: warning: implicit declaration of function 'ClearScreen' [-Wimplicit-function-declaration]
+  ClearScreen(16);
+  ^
+ScreenThree.c:14:2: warning: implicit declaration of function 'DrawProgress' [-Wimplicit-function-declaration]
+  DrawProgress(3);
+  ^
+ScreenThree.c:15:2: warning: implicit declaration of function 'DrawScreen' [-Wimplicit-function-declaration]
+  DrawScreen(tickets, 400, 269, 200, 100, 0);
+  ^
+ScreenThree.c:16:2: warning: implicit declaration of function 'snprintf' [-Wimplicit-function-declaration]
+  snprintf(HiNameMessage, sizeof(HiNameMessage), "Hi %s", group7[passenger].id);
+  ^
+ScreenThree.c:16:2: warning: incompatible implicit declaration of built-in function 'snprintf'
+ScreenThree.c:18:2: warning: implicit declaration of function 'OutGraphicsStringFont2' [-Wimplicit-function-declaration]
+  OutGraphicsStringFont2(60, 400, 3, 16, HiNameMessage, 1);
+  ^
+Info: Compiling ScreenTwo.c to obj/default/ScreenTwo.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/ScreenTwo.o ScreenTwo.c
+ScreenTwo.c: In function 'ScreenTwoLoad':
+ScreenTwo.c:10:2: warning: implicit declaration of function 'ClearScreen' [-Wimplicit-function-declaration]
+  ClearScreen(16);
+  ^
+ScreenTwo.c:11:2: warning: implicit declaration of function 'DrawProgress' [-Wimplicit-function-declaration]
+  DrawProgress(2);
+  ^
+ScreenTwo.c:12:2: warning: implicit declaration of function 'DrawKeyPad' [-Wimplicit-function-declaration]
+  DrawKeyPad();
+  ^
+ScreenTwo.c:13:2: warning: implicit declaration of function 'OutGraphicsStringFont2' [-Wimplicit-function-declaration]
+  OutGraphicsStringFont2(70,183,0,16,"Please enter your OTP",1);
+  ^
+ScreenTwo.c:14:2: warning: implicit declaration of function 'DrawPasswordBox' [-Wimplicit-function-declaration]
+  DrawPasswordBox();
+  ^
+ScreenTwo.c:9:9: warning: unused variable 'j' [-Wunused-variable]
+  int i, j;
+         ^
+ScreenTwo.c:9:6: warning: unused variable 'i' [-Wunused-variable]
+  int i, j;
+      ^
+Info: Compiling ScreenZero.c to obj/default/ScreenZero.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/ScreenZero.o ScreenZero.c
+ScreenZero.c: In function 'ScreenZeroLoad':
+ScreenZero.c:12:2: warning: implicit declaration of function 'ClearScreen' [-Wimplicit-function-declaration]
+  ClearScreen(16);
+  ^
+ScreenZero.c:14:2: warning: implicit declaration of function 'addBtn' [-Wimplicit-function-declaration]
+  addBtn(0,800,0,480,ScreenOneLoad);
+  ^
+ScreenZero.c:15:2: warning: implicit declaration of function 'DrawScreen' [-Wimplicit-function-declaration]
+  DrawScreen(logo, 649, 100, 80, 160, NULL);
+  ^
+ScreenZero.c:16:2: warning: implicit declaration of function 'OutGraphicsStringFont2' [-Wimplicit-function-declaration]
+  OutGraphicsStringFont2(235,320,12,16,"Press anywhere to begin",1);
+  ^
+Info: Compiling Timer.c to obj/default/Timer.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/Timer.o Timer.c
+Timer.c: In function 'Restart_Timer':
+Timer.c:43:2: warning: implicit declaration of function 'Start_Timer' [-Wimplicit-function-declaration]
+  Start_Timer(timer_base);
+  ^
+Timer.c: At top level:
+Timer.c:46:6: warning: conflicting types for 'Start_Timer'
+ void Start_Timer(int timer_base)
+      ^
+Timer.c:43:2: note: previous implicit declaration of 'Start_Timer' was here
+  Start_Timer(timer_base);
+  ^
+Info: Compiling Touchscreen.c to obj/default/Touchscreen.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/Touchscreen.o Touchscreen.c
+Touchscreen.c: In function 'Init_Touchscreen':
+Touchscreen.c:40:7: warning: unused variable 'ch4' [-Wunused-variable]
+  char ch4 = getcharTouchscreen();
+       ^
+Touchscreen.c:38:7: warning: unused variable 'ch2' [-Wunused-variable]
+  char ch2 = getcharTouchscreen();
+       ^
+Touchscreen.c:37:7: warning: unused variable 'ch1' [-Wunused-variable]
+  char ch1 = getcharTouchscreen();
+       ^
+Info: Compiling TouchscreenKeypress.c to obj/default/TouchscreenKeypress.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/TouchscreenKeypress.o TouchscreenKeypress.c
+Info: Compiling Wifi.c to obj/default/Wifi.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/Wifi.o Wifi.c
+Info: Compiling graphics.c to obj/default/graphics.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/graphics.o graphics.c
+graphics.c: In function 'ClearScreen':
+graphics.c:61:2: warning: implicit declaration of function 'clearBtns' [-Wimplicit-function-declaration]
+  clearBtns();
+  ^
+graphics.c:63:3: warning: implicit declaration of function 'HLineAcc' [-Wimplicit-function-declaration]
+   HLineAcc(0,i,Max_X,colour);
+   ^
+graphics.c: At top level:
+graphics.c:107:6: warning: conflicting types for 'HLineAcc'
+ void HLineAcc(int x1, int y1, int length, int color){
+      ^
+graphics.c:63:3: note: previous implicit declaration of 'HLineAcc' was here
+   HLineAcc(0,i,Max_X,colour);
+   ^
+graphics.c: In function 'Rectangle':
+graphics.c:155:2: warning: implicit declaration of function 'abs' [-Wimplicit-function-declaration]
+  int dx = abs(x2 - x1);
+  ^
+graphics.c: In function 'FilledRectangle':
+graphics.c:169:6: warning: unused variable 'biggerx' [-Wunused-variable]
+  int biggerx = x1 > x2 ? x1 : x2;
+      ^
+graphics.c:166:6: warning: unused variable 'dy' [-Wunused-variable]
+  int dy = abs(y2-y1);
+      ^
+graphics.c: In function 'Triangle':
+graphics.c:198:2: warning: implicit declaration of function 'LineAcc' [-Wimplicit-function-declaration]
+  LineAcc(x1, y1, x2, y2, color);
+  ^
+graphics.c: In function 'RandomLine':
+graphics.c:266:2: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+  int x1 = rand() % Max_X;
+  ^
+graphics.c: At top level:
+graphics.c:277:6: warning: conflicting types for 'LineAcc'
+ void LineAcc(int x1, int y1, int x2, int y2, int color){
+      ^
+graphics.c:198:2: note: previous implicit declaration of 'LineAcc' was here
+  LineAcc(x1, y1, x2, y2, color);
+  ^
+graphics.c: In function 'InitializeStartScreen_state0':
+graphics.c:363:4: warning: implicit declaration of function 'OutGraphicsStringFont2' [-Wimplicit-function-declaration]
+    OutGraphicsStringFont2(325,15,BLACK,CYAN,"Group 7 Inc",1);
+    ^
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc -xc -MP -MMD -c -I../Sprint_1_ver_2_bsp//HAL/inc -I../Sprint_1_ver_2_bsp/ -I../Sprint_1_ver_2_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o obj/default/hello_world.o hello_world.c
+hello_world.c: In function 'main':
+hello_world.c:133:2: warning: implicit declaration of function 'Init_GPS' [-Wimplicit-function-declaration]
+  Init_GPS();
+  ^
+hello_world.c:136:2: warning: implicit declaration of function 'Init_Timer' [-Wimplicit-function-declaration]
+  Init_Timer(TIMER_BASE_TIMER_0, TIMER_DURATION_TIMER_0); //idle screen timer
+  ^
+hello_world.c:139:2: warning: implicit declaration of function 'Reset' [-Wimplicit-function-declaration]
+  Reset(); //reset for SHA 256
+  ^
+hello_world.c:142:2: warning: implicit declaration of function 'Start_Timer' [-Wimplicit-function-declaration]
+  Start_Timer(TIMER_BASE_TIMER_0);
+  ^
+hello_world.c:151:4: warning: implicit declaration of function 'clearBtns' [-Wimplicit-function-declaration]
+    clearBtns();
+    ^
+hello_world.c:152:4: warning: implicit declaration of function 'ScreenZeroLoad' [-Wimplicit-function-declaration]
+    ScreenZeroLoad();
+    ^
+hello_world.c:162:5: warning: implicit declaration of function 'ScreenTouchedNoBlock' [-Wimplicit-function-declaration]
+     if (ScreenTouchedNoBlock()) {
+     ^
+hello_world.c:164:6: warning: implicit declaration of function 'Restart_Timer' [-Wimplicit-function-declaration]
+      Restart_Timer(TIMER_BASE_TIMER_0, TIMER_DURATION_TIMER_0);
+      ^
+hello_world.c:166:6: warning: implicit declaration of function 'Capture_Touch_Points' [-Wimplicit-function-declaration]
+      Capture_Touch_Points();
+      ^
+hello_world.c:185:5: warning: implicit declaration of function 'WaitForDoneNoBlock' [-Wimplicit-function-declaration]
+     if (WaitForDoneNoBlock()) {
+     ^
+hello_world.c:186:6: warning: implicit declaration of function 'readWholeHash' [-Wimplicit-function-declaration]
+      long long hashed = readWholeHash();
+      ^
+hello_world.c:187:6: warning: implicit declaration of function 'WaitForReady' [-Wimplicit-function-declaration]
+      WaitForReady();
+      ^
+hello_world.c:218:4: warning: implicit declaration of function 'ScreenTwoLoad' [-Wimplicit-function-declaration]
+    ScreenTwoLoad();
+    ^
+hello_world.c:223:4: warning: implicit declaration of function 'addBtn' [-Wimplicit-function-declaration]
+    addBtn(415, 415 + 88, 117, 117 + 82, Key7Pressed);
+    ^
+hello_world.c:246:6: warning: implicit declaration of function 'runBtn' [-Wimplicit-function-declaration]
+      runBtn(p1.x, p1.y);
+      ^
+hello_world.c:253:4: warning: implicit declaration of function 'ScreenThreeLoad' [-Wimplicit-function-declaration]
+    ScreenThreeLoad();
+    ^
+hello_world.c:261:4: warning: implicit declaration of function 'ScreenErrLoad' [-Wimplicit-function-declaration]
+    ScreenErrLoad();
+    ^
+hello_world.c: At top level:
+hello_world.c:299:6: warning: conflicting types for 'Capture_Touch_Points'
+ void Capture_Touch_Points(void) {
+      ^
+hello_world.c:166:6: note: previous implicit declaration of 'Capture_Touch_Points' was here
+      Capture_Touch_Points();
+      ^
+hello_world.c: In function 'Init_Interrupt':
+hello_world.c:343:2: warning: implicit declaration of function 'alt_irq_register' [-Wimplicit-function-declaration]
+  alt_irq_register( TIMER_IRQ_NUMBER_TIMER_0,
+  ^
+hello_world.c: In function 'UpdateGPS':
+hello_world.c:382:2: warning: implicit declaration of function 'getcharGPS' [-Wimplicit-function-declaration]
+  if (getcharGPS() == 'G') {
+  ^
+hello_world.c:411:5: warning: implicit declaration of function 'OutGraphicsStringFont2' [-Wimplicit-function-declaration]
+     OutGraphicsStringFont2(590, 15, BLACK, WHITE, complete_time, 1);
+     ^
+Info: Linking Sprint_1_ver_2.elf
+nios2-elf-g++  -T'../Sprint_1_ver_2_bsp//linker.x' -msys-crt0='../Sprint_1_ver_2_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../Sprint_1_ver_2_bsp/   -Wl,-Map=Sprint_1_ver_2.map   -O0 -g -Wall   -mno-hw-div -mno-hw-mul -mno-hw-mulx  -o Sprint_1_ver_2.elf obj/default/ColourPallette.o obj/default/Draw.o obj/default/Fill.o obj/default/Fonts.o obj/default/GPS.o obj/default/KeyPad.o obj/default/OutGraphicsCharFont1.o obj/default/OutGraphicsCharFont2.o obj/default/ProgressBar.o obj/default/SHA256.o obj/default/ScreenErr.o obj/default/ScreenOne.o obj/default/ScreenThree.o obj/default/ScreenTwo.o obj/default/ScreenZero.o obj/default/Timer.o obj/default/Touchscreen.o obj/default/TouchscreenKeypress.o obj/default/Wifi.o obj/default/graphics.o obj/default/hello_world.o -lm -msys-lib=m
+nios2-elf-insert Sprint_1_ver_2.elf --thread_model hal --cpu_name nios2_qsys_0 --qsys true --simulation_enabled false --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name nios_system --quartus_project_dir "C:/Users/Sathya/Desktop/Schoolwork/Year3/Term2/CPEN391/CPEN391Group7/Sprint2_Final" --jdi C:/Users/Sathya/Desktop/Schoolwork/Year3/Term2/CPEN391/CPEN391Group7/Sprint2_Final/software/Sprint_1_ver_2_bsp/../../DE1_SOC_NIOS.jdi --sopcinfo C:/Users/Sathya/Desktop/Schoolwork/Year3/Term2/CPEN391/CPEN391Group7/Sprint2_Final/software/Sprint_1_ver_2_bsp/../../nios_system.sopcinfo
+Info: (Sprint_1_ver_2.elf) 611 KBytes program size (code + initialized data).
+Info:                      64917 KBytes free for stack + heap.
+Info: Creating Sprint_1_ver_2.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source Sprint_1_ver_2.elf >Sprint_1_ver_2.objdump
+[Sprint_1_ver_2 build complete]
+15:35:12 **** Build of configuration Nios II for project Sprint_1_ver_2 ****
+make all 
+Info: Building ../Sprint_1_ver_2_bsp/
+C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../Sprint_1_ver_2_bsp/
+[BSP build complete]
+[Sprint_1_ver_2 build complete]
+15:35:14 **** Incremental Build of configuration Nios II for project Sprint_1_ver_2 ****
+make all 
+Info: Building ../Sprint_1_ver_2_bsp/
+C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../Sprint_1_ver_2_bsp/
+[BSP build complete]
+[Sprint_1_ver_2 build complete]
+15:49:50 **** Build of configuration Nios II for project Sprint_1_ver_2 ****
+make all 
+Info: Building ../Sprint_1_ver_2_bsp/
+C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../Sprint_1_ver_2_bsp/
+[BSP build complete]
+[Sprint_1_ver_2 build complete]
+15:50:13 **** Incremental Build of configuration Nios II for project Sprint_1_ver_2 ****
+make all 
+Info: Building ../Sprint_1_ver_2_bsp/
+C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../Sprint_1_ver_2_bsp/
+[BSP build complete]
+[Sprint_1_ver_2 build complete]
+16:08:51 **** Build of configuration Nios II for project Sprint_1_ver_2 ****
+make all 
+Info: Building ../Sprint_1_ver_2_bsp/
+C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../Sprint_1_ver_2_bsp/
+[BSP build complete]
+[Sprint_1_ver_2 build complete]
+16:09:13 **** Incremental Build of configuration Nios II for project Sprint_1_ver_2 ****
+make all 
+Info: Building ../Sprint_1_ver_2_bsp/
+C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../Sprint_1_ver_2_bsp/
+[BSP build complete]
+[Sprint_1_ver_2 build complete]
+16:28:24 **** Build of configuration Nios II for project Sprint_1_ver_2 ****
+make all 
+Info: Building ../Sprint_1_ver_2_bsp/
+C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../Sprint_1_ver_2_bsp/
+[BSP build complete]
+[Sprint_1_ver_2 build complete]
+16:28:40 **** Incremental Build of configuration Nios II for project Sprint_1_ver_2 ****
+make all 
+Info: Building ../Sprint_1_ver_2_bsp/
+C:/altera/15.0/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../Sprint_1_ver_2_bsp/
+[BSP build complete]
+[Sprint_1_ver_2 build complete]

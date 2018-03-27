@@ -1,0 +1,49 @@
+module sha_tb();
+reg clk;
+reg [15:0] address;
+reg byte_select,IO_EN,rw;
+reg [7:0] DataInNios;
+reg [31:0] DataInScan;
+reg start_in;
+
+wire done,reset,hashing;
+wire [7:0] start_out,dataout;
+wire [511:0] block;
+wire [255:0] h_in, h_out;
+wire [2:0] state_out;
+
+controller ctrl(clk,address,rw,byte_select,state_out,IO_EN,h_in,DataInNios,DataInScan,dataout,block,done,start_out,start_in,reset,hashing);
+sha sh(clk,start_out,block,h_in,h_out,hashing,state_out,done);
+register8 r8(done,reset,h_out,h_in);
+
+initial begin
+address = 16'h0300;
+#5;
+clk = 0;
+byte_select = 0;
+rw = 0;
+IO_EN = 1;
+DataInScan = 32'b0;
+DataInNios = 8'b1;
+start_in = 0;
+
+#5;
+clk = 1;
+#5;
+clk = 0;
+IO_EN = 0;
+#5;
+start_in = 1;
+#5;
+clk = 1;
+#5;
+clk = 0;
+start_in = 0;
+repeat(250) begin
+clk = 0;
+#5;
+clk = 1;
+#5;
+end
+end
+endmodule
