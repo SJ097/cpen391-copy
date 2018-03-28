@@ -3,6 +3,7 @@ package com.example.flightbooker;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.provider.SyncStateContract;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -120,6 +121,7 @@ public class DisplaySuccessActivity extends AppCompatActivity {
         airport_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                finish();
                 startActivity(new Intent(DisplaySuccessActivity.this, MapActivity.class));
             }
         });

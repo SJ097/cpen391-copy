@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -32,7 +33,11 @@ import android.widget.ScrollView;
 import android.widget.Scroller;
 import android.widget.TextView;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -135,18 +140,38 @@ public class TouchImageView extends AppCompatImageView {
         onDrawReady = false;
         super.setOnTouchListener(new PrivateOnTouchListener());
 
-        saveOriginalBitmap();
 
-        ogbmp = ((BitmapDrawable)this.getDrawable()).getBitmap();
-        //super.setImageBitmap(ogbmp);
-        displayAllIcons();
+        loadMapGraph();
+        scaleX = 1f;
+        scaleY = 1f;
+    }
+    private MapGraph mapGraph;
+    private void loadMapGraph(){
+        mapGraph = MapGraph.getMap();
+
+        return;
+        /*try {
+            ObjectInputStream in = new ObjectInputStream(
+                    new FileInputStream("C:\\Users\\Matt\\CPEN391Group7\\FlightBooker\\macleod-graph.dat")
+            );
+            mapGraph = (MapGraph) in.readObject();
+        }
+        catch(IOException e){
+            System.out.println(e);
+            System.exit(1);
+        }catch(ClassNotFoundException e){
+            System.out.println(e);
+            System.exit(1);
+        }*/
     }
     public void setIcons(Icon[] icons){
         this.icons = icons;
         displayAllIcons();
     }
-    private void saveOriginalBitmap(){
-        ogbmp = ((BitmapDrawable)this.getDrawable()).getBitmap();
+    private float scaleX, scaleY;
+    public void setScale(float scaleX, float scaleY){
+        this.scaleX = scaleX;
+        this.scaleY = scaleY;
     }
     private Bitmap bmpWithIcons;
     public void drawLines(int[] points) {
@@ -156,8 +181,18 @@ public class TouchImageView extends AppCompatImageView {
         Paint paint = new Paint();
         paint.setColor(Color.rgb(220,0,0));
         paint.setStrokeWidth(10);
+        float x1, x2, y1, y2;
         for(int i = 0; i < points.length-3; i+=2){
-            canvas.drawLine(points[i],points[i+1],points[i+2],points[i+3],paint);
+            x1 = points[i];
+            y1 = points[i+1];
+            x2 = points[i+2];
+            y2 = points[i+3];
+
+            x1 *= scaleX;
+            x2 *= scaleX;
+            y1 *= scaleY;
+            y2 *= scaleY;
+            canvas.drawLine(x1,y1,x2,y2,paint);
         }
         super.setImageBitmap(bmOverlay);
     }
@@ -168,9 +203,6 @@ public class TouchImageView extends AppCompatImageView {
     private LinearLayout venueMenu;
     public void setVenueMenu(LinearLayout venueMenu){
         this.venueMenu = venueMenu;
-    }
-    private void resetImage(){
-        super.setImageBitmap(ogbmp);
     }
     @Override
     public void setOnTouchListener(OnTouchListener l) {
@@ -199,8 +231,6 @@ public class TouchImageView extends AppCompatImageView {
         savePreviousImageValues();
         fitImageToView();
     }
-
-    private Bitmap ogbmp;
 
     @Override
     public void setImageBitmap(Bitmap bm) {
@@ -341,20 +371,22 @@ public class TouchImageView extends AppCompatImageView {
         if(icons == null){
             return;
         }
-        Bitmap bmOverlay = Bitmap.createBitmap(ogbmp.getWidth(), ogbmp.getHeight(), ogbmp.getConfig());
+        Bitmap bm = ((BitmapDrawable)this.getDrawable()).getBitmap();
+        Bitmap bmOverlay = Bitmap.createBitmap(bm.getWidth(), bm.getHeight(), bm.getConfig());
+
         Canvas canvas = new Canvas(bmOverlay);
-        canvas.drawBitmap(ogbmp, new Matrix(), null);
+        canvas.drawBitmap(bm, new Matrix(), null);
         Bitmap bmp;
         for(int i = 0; i < icons.length; i++){
             bmp = icons[i].getBitmap();
             Rect full = new Rect(0,0,bmp.getWidth(),bmp.getHeight());
+            icons[i].scale(scaleX,scaleY);
             canvas.drawBitmap(bmp,full,icons[i].getRect(),null);
         }
         bmpWithIcons = bmOverlay;
         super.setImageBitmap(bmOverlay);
     }
     private void resetVenues(){
-        int count = venueMenu.getChildCount();
         venueMenu.removeAllViews();
     }
 
@@ -978,7 +1010,7 @@ public class TouchImageView extends AppCompatImageView {
                                 if(icons[i].inRange(pt.x,pt.y) && icons[i].hasVenues()){
                                     displayVenues(icons[i].getVenues());
                                     detailView.setVisibility(View.VISIBLE);
-
+                                    drawLines(mapGraph.getPath("entrance0",icons[i].getName()));
                                     break;
                                 }
                             }

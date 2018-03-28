@@ -24,15 +24,14 @@
 
         <com.example.flightbooker.Map.TouchImageView
             android:id="@+id/img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_gravity="top"
             android:adjustViewBounds="true"
             android:src="@drawable/macleod_small" />
 
         <ScrollView
-
             android:id="@+id/detailView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

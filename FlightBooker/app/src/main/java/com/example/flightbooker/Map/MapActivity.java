@@ -23,14 +23,23 @@ public class MapActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_map);
+        backButton = findViewById(R.id.map_back_button);
+
 
         button = findViewById(R.id.xbutton);
         detailView = findViewById(R.id.detailView);
         img = findViewById(R.id.img);
         venueMenu = findViewById(R.id.venueMenu);
 
+        backButton.bringToFront();
+        backButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                finish();
+                startActivity(new Intent(MapActivity.this, DisplaySuccessActivity.class));
+            }
+        });
         img.setDetailView(detailView);
         img.setVenueMenu(venueMenu);
         detailView.setVisibility(View.INVISIBLE);
@@ -41,58 +50,58 @@ public class MapActivity extends AppCompatActivity {
             }
         });
 
-        backButton = findViewById(R.id.map_back_button);
-        backButton.bringToFront();
-        backButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                startActivity(new Intent(MapActivity.this, DisplaySuccessActivity.class));
-            }
-        });
-
         final int resourceHeight = 924;
         final int resourceWidth = 1064;
+
         ViewTreeObserver vto = img.getViewTreeObserver();
         vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             public boolean onPreDraw() {
+                if(firstPreDraw){
+                    firstPreDraw = false;
+                }
+                else{
+                    return true;
+                }
                 int realHeight, realWidth;
                 //realHeight = img.getMeasuredHeight();
                 //realWidth = img.getMeasuredWidth();
 
                 realHeight = img.getDrawable().getBounds().height();
                 realWidth = img.getDrawable().getBounds().width();
-                setupIcons(resourceHeight,resourceWidth,realHeight,realWidth);
+                System.out.println(realWidth + "," + realHeight);
 
+                img.setScale((float)(realWidth)/(float)(resourceWidth),
+                        (float)(realHeight)/(float)(resourceHeight));
+                setupIcons();
                 return true;
             }
         });
-
     }
+    private boolean firstPreDraw = true;
 
     private void drawLine(){
         int[] points = new int[]{0,100,300,200,500,300};
         img.drawLines(points);
     }
 
-    private void setupIcons(int resourceHeight, int resourceWidth, int realHeight, int realWidth){
-        float scaleX = (float)(realWidth)/(float)(resourceWidth);
-        float scaleY = (float)(realHeight)/(float)(resourceHeight);
+    private void setupIcons(){
+
         Icon[] icons = new Icon[6];
         BitmapDrawable bth = ((BitmapDrawable)getResources().getDrawable(R.drawable.bathroomicon));
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        icons[0] = new Icon(bth,691,330,80,scaleX,scaleY);
-        icons[1] = new Icon(bth, 605,600,80,scaleX,scaleY);
+        icons[0] = new Icon("bathroom0",bth,691,330,40);
+        icons[1] = new Icon("bathroom1",bth, 605,600,40);
         BitmapDrawable food = ((BitmapDrawable)getResources().getDrawable(R.drawable.foodicon));
-        icons[2] = new Icon(food, 433,600,100,scaleX,scaleY);
-        icons[3] = new Icon(food, 871,490,100,scaleX,scaleY);
+        icons[2] = new Icon("food1",food, 433,600,50);
+        icons[3] = new Icon("food0",food, 871,490,50);
 
         BitmapDrawable lock = ((BitmapDrawable)getResources().getDrawable(R.drawable.lock));
-        icons[4] = new Icon(lock,
-                895,224,90,scaleX,scaleY);
-        icons[5] = new Icon(lock,
-                876,729,90,scaleX,scaleY);
+        icons[4] = new Icon("securityoffice0",lock,
+                895,224,45);
+        icons[5] = new Icon("securityoffice1",lock,
+                876,729,45);
 
         Venue[] venues1 = new Venue[2];
         venues1[0] = new Venue("Cinnabon","Bakery",R.drawable.cinnabon,8,21);

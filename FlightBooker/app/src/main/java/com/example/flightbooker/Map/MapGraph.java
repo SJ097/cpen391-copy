@@ -1,9 +1,13 @@
 package com.example.flightbooker.Map;
 
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -137,7 +141,18 @@ public class MapGraph implements Serializable{
         return path;
     }
 
-    public static void main(String[] args){
+    public MapNode getNode(String name){
+        Iterator it = nodes.iterator();
+        while(it.hasNext()){
+            MapNode n = (MapNode) it.next();
+            if(n.getName() == name){
+                return n;
+            }
+        }
+        return null;
+    }
+
+    public static MapGraph getMap(){
         MapNode[] nodes = new MapNode[36];
         nodes[0] = new MapNode(775,40,"entrance0");
         nodes[1] = new MapNode(770,79,"entrance1");
@@ -153,7 +168,7 @@ public class MapGraph implements Serializable{
         nodes[11] = new MapNode(687,499,"shop0");
         nodes[12] = new MapNode(844,503,"food0");
         nodes[13] = new MapNode(782,684,"firsthall5");
-        nodes[14] = new MapNode(902,605,"elevator");
+        nodes[14] = new MapNode(902,605,"elevators");
         nodes[15] = new MapNode(791,751,"security0");
         nodes[16] = new MapNode(555,733,"security2");
         nodes[17] = new MapNode(784,832,"security1");
@@ -216,6 +231,11 @@ public class MapGraph implements Serializable{
         m.connect("gates0","gate10");
         m.connect("gate12","gate11");
         m.createPaths();
+        return m;
+    }
+
+    public static void main(String[] args){
+        MapGraph m = MapGraph.getMap();
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(
                     "macleod-graph.dat"

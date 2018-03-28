@@ -9,25 +9,34 @@ import android.graphics.drawable.BitmapDrawable;
  */
 
 public class Icon {
+    private String name;
     private Bitmap bmp;
     private int x1,y1,x2,y2;
-    private Rect rect;
     private Venue[] venues;
 
-    public Icon(BitmapDrawable drawable, float x, float y, int size,float scaleX, float scaleY){
-        x *= scaleX;
-        y *= scaleY;
+    public Icon(String name, BitmapDrawable drawable, float x, float y, int size){
+        this.name = name;
         this.bmp = drawable.getBitmap();
         this.x1 = (int)x;
-        this.x2 = (int)(x+size/scaleX);
+        this.x2 = (int)(x+size);
         this.y1 = (int)y;
-        this.y2 = (int)(y+size/scaleY);
-        rect = new Rect(x1,y1,x2,y2);
+        this.y2 = (int)(y+size);
         this.venues = new Venue[0];
+    }
+
+    public String getName(){
+        return name;
     }
 
     public void setVenues(Venue[] venues){
         this.venues = venues;
+    }
+
+    public void scale(float scaleX, float scaleY){
+        x1 *= scaleX;
+        y1 *= scaleY;
+        x2 *= scaleX;
+        y2 *= scaleY;
     }
 
     public boolean inRange(float x, float y){
@@ -38,6 +47,7 @@ public class Icon {
     }
 
     public Rect getRect(){
+        Rect rect = new Rect(x1,y1,x2,y2);
         return rect;
     }
 
