@@ -1,40 +1,52 @@
-module sha(clk,start,block,h_in,h_out,state_out,done_out);
+module sha(clk,reset,start,block,h_in,h_out,hashing,state_out,done_out);
 
-input clk;
+input clk,reset;
 input [7:0] start;
 input [511:0] block;
 input [255:0] h_in;
+output hashing;
 output [255:0] h_out;
 output [2:0] state_out;
 
-reg [31:0] h1_out,h2_out,h3_out,h4_out,h5_out,h6_out,h7_out,h8_out;
+wire [31:0] h1_out,h2_out,h3_out,h4_out,h5_out,h6_out,h7_out,h8_out;
+wire [31:0] h1_in,h2_in,h3_in,h4_in,h5_in,h6_in,h7_in,h8_in;
 output done_out;
 
 wire [63:0][31:0]W;
 reg [7:0] counter;
 
-assign h_out = {h1_out,h2_out,h3_out,h4_out,h5_out,h6_out,h7_out,h8_out};
+assign h_out = {h8_out,h7_out,h6_out,h5_out,h4_out,h3_out,h2_out,h1_out};
+assign h1_in = h_in[31:0];
+assign h2_in = h_in[63:32];
+assign h3_in = h_in[95:64];
+assign h4_in = h_in[127:96];
+assign h5_in = h_in[159:128];
+assign h6_in = h_in[191:160];
+assign h7_in = h_in[223:192];
+assign h8_in = h_in[255:224];
+
 //constants
 wire [63:0][31:0] K;
 
-reg [31:0] a,b,c,d,e,f,g,h;
-reg [31:0] a_new,b_new,c_new,d_new,e_new,f_new,g_new,h_new;
+reg unsigned [31:0] a,b,c,d,e,f,g,h;
+wire unsigned [31:0] a_new,b_new,c_new,d_new,e_new,f_new,g_new,h_new;
 reg a_h_en;
 
-typedef enum logic[2:0] {IDLE,INIT,HASH,DONE} state;
+typedef enum logic[2:0] {IDLE,INIT,PREPARE,HASH,ALMOST,DONE} state;
 state current_state, next_state;
+assign hashing = current_state == INIT || current_state == HASH || current_state == PREPARE || current_state == ALMOST;
 
 assign state_out = current_state;
 assign done_out = current_state == DONE;
 
-assign h1_out = h_in[31:0] + a;
-assign h2_out = h_in[63:32] + b;
-assign h3_out = h_in[95:64] + c;
-assign h4_out = h_in[127:96] + d;
-assign h5_out = h_in[159:128] + e;
-assign h6_out = h_in[191:160] + f;
-assign h7_out = h_in[223:192] + g;
-assign h8_out = h_in[255:224] + h;
+assign h1_out = h1_in + a;
+assign h2_out = h2_in + b;
+assign h3_out = h3_in + c;
+assign h4_out = h4_in + d;
+assign h5_out = h5_in + e;
+assign h6_out = h6_in + f;
+assign h7_out = h7_in + g;
+assign h8_out = h8_in + h;
 
 //Combinational block signals
 wire [31:0] bigsig0_out;
@@ -98,6 +110,7 @@ wire [31:0] ch_out, maj_out;
  assign sig0_in[26] = W[40];
  assign sig1_in[26] = W[27];
  assign sig0_in[27] = W[41];
+
  assign sig1_in[27] = W[28];
  assign sig0_in[28] = W[42];
  assign sig1_in[28] = W[29];
@@ -261,13 +274,16 @@ assign K = '{
 32'h748f82ee,32'h78a5636f,32'h84c87814,32'h8cc70208,
 32'h90befffa,32'ha4506ceb,32'hbef9a3f7,32'hc67178f2};
 
-always @(posedge clk) begin
-	current_state <= next_state;
+always @(posedge clk or posedge reset) begin
+	if(reset) 
+		current_state <= IDLE;
+	else
+		current_state <= next_state;
 end
 
 // Update register logic
 always @(posedge clk) begin
-	if(a_h_en) begin
+	if(current_state == HASH) begin
 		a <= a_new;
 		b <= b_new;
 		c <= c_new;
@@ -277,13 +293,23 @@ always @(posedge clk) begin
 		g <= g_new;
 		h <= h_new;
 	end
+	else if(current_state == INIT) begin
+		a <= h_in[31:0];
+		b <= h_in[63:32];
+		c <= h_in[95:64];
+		d <= h_in[127:96];
+		e <= h_in[159:128];
+		f <= h_in[191:160];
+		g <= h_in[223:192];
+		h <= h_in[255:224];
+	end
 end
 
 always @(posedge clk) begin
 	if(current_state == INIT)
 		counter <= 0;
 	else if( current_state == HASH)
-		if(counter == 8'b01000000)
+		if(counter == 8'd63)
 			counter <= 0;
 		else
 			counter <= counter + 1;
@@ -358,49 +384,48 @@ assign	W[15] = block[31:0];
  assign W[62] = W[55] + W[46] + sig1_out[46] + sig0_out[46];
  assign W[63] = W[56] + W[47] + sig1_out[47] + sig0_out[47];
 
+wire unsigned [31:0] current_K, current_W,t1,t2;
+assign current_K = K[counter];
+assign current_W = W[counter];
+assign t1 = h + bigsig1_out + ch_out + current_K + current_W;
+assign t2 = bigsig0_out + maj_out;
+
+assign h_new = g;
+assign g_new = f;
+assign f_new = e;
+assign e_new = d + t1;
+assign d_new = c;
+assign c_new = b;
+assign b_new = a;
+assign a_new = t1 + t2;
 always @(current_state or counter or block or h_in or start) begin 
-	a_h_en <= 0;
-	a_new <= 0;
-	b_new <= 0;
-	c_new <= 0;
-	d_new <= 0;
-	e_new <= 0;
-	f_new <= 0;
-	g_new <= 0;
-	h_new <= 0;
 	case(current_state)
 		INIT: begin
-			a_new <= h_in[31:0];
-			b_new <= h_in[63:32];
-			c_new <= h_in[95:64];
-			d_new <= h_in[127:96];
-			e_new <= h_in[159:128];
-			f_new <= h_in[191:160];
-			g_new <= h_in[223:192];
-			h_new <= h_in[255:224];
 			a_h_en <= 1;
+			next_state <= PREPARE;
+		end
+		PREPARE: begin
 			next_state <= HASH;
 		end
 		HASH: begin
-			if(counter == 8'b01000000) begin
-				next_state <= DONE;
-			end
+
+			if(counter == 8'd63) begin
+				a_h_en <= 0;
+				next_state <= ALMOST;
+			end	
+			
 			else begin
 				a_h_en <= 1;
-				h_new <= g;
-				g_new <= f;
-				f_new <= e;
-				e_new <= d + h + bigsig1_out + K[counter] + ch_out + W[counter];
-				d_new <= c;
-				c_new <= b;
-				b_new <= a;
-				a_new <= h + bigsig1_out + ch_out + K[counter] + W[counter] + bigsig0_out + maj_out;
 				next_state <= HASH;
 			end
 		end
+		ALMOST: begin
+			next_state <= DONE;
+		end
 		DONE: begin
-			if(start == 8'd17)
-				next_state <= INIT;
+			a_h_en <= 0;
+			if(reset)
+				next_state <= IDLE;
 			else
 				next_state <= DONE;
 		end

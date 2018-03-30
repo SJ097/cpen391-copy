@@ -2,7 +2,15 @@ module register8(done, reset, hash_in, hash_out);
 
 input done, reset;
 input [255:0] hash_in;
-output reg [255:0] hash_out;
+output reg [255:0] hash_out =
+{32'h6a09e667,
+32'hbb67ae85,
+32'h3c6ef372,
+32'ha54ff53a,
+32'h510e527f,
+32'h9b05688c,
+32'h1f83d9ab,
+32'h5be0cd19};
 
 always @(posedge done or posedge reset) begin
 	if(reset) begin
