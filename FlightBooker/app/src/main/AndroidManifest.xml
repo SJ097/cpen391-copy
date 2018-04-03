@@ -103,6 +103,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Map.ScannerActivity" />
+        <activity android:name=".Map.QRScanner" />
     </application>
 
 </manifest>

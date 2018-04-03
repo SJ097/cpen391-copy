@@ -122,10 +122,6 @@ public class SHA
     }
 
     private long bigsig0(long x){
-
-        //System.out.println("2:" + String.format("%08X",Rotr(x,2)));
-        //System.out.println("13:" + String.format("%08X",Rotr(x,13)));
-        //System.out.println("22:" + String.format("%08X",Rotr(x,22)));
         return Rotr(x,2)^ Rotr(x,13)^ Rotr(x,22);
     }
 

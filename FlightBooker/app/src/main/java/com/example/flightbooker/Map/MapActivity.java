@@ -7,16 +7,20 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+
+import com.google.zxing.integration.android.IntentIntegrator;
 
 import com.example.flightbooker.DisplaySuccessActivity;
 import com.example.flightbooker.R;
 
 public class MapActivity extends AppCompatActivity {
 
-    private ImageButton button,backButton;
+    private ImageButton xButton,backButton, cameraButton;
+
     private TouchImageView img;
     private ScrollView detailView;
     private LinearLayout venueMenu;
@@ -24,13 +28,17 @@ public class MapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
         backButton = findViewById(R.id.map_back_button);
-
-
-        button = findViewById(R.id.xbutton);
+        xButton = findViewById(R.id.xbutton);
         detailView = findViewById(R.id.detailView);
         img = findViewById(R.id.img);
         venueMenu = findViewById(R.id.venueMenu);
+        cameraButton = findViewById(R.id.camera_button);
+        Button findTerminal = findViewById(R.id.findterminal);
+
+        final String code = getIntent().getStringExtra("SCANNED_CODE");
+
 
         backButton.bringToFront();
         backButton.setOnClickListener(new View.OnClickListener(){
@@ -43,12 +51,28 @@ public class MapActivity extends AppCompatActivity {
         img.setDetailView(detailView);
         img.setVenueMenu(venueMenu);
         detailView.setVisibility(View.INVISIBLE);
-        button.setOnClickListener(new View.OnClickListener(){
+        xButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 detailView.setVisibility(View.INVISIBLE);
             }
         });
+
+        findTerminal.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                img.setDestination("");
+            }
+        });
+
+        cameraButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                finish();
+                startActivity(new Intent(MapActivity.this, QRScanner.class));
+            }
+        });
+
 
         final int resourceHeight = 924;
         final int resourceWidth = 1064;
@@ -73,6 +97,9 @@ public class MapActivity extends AppCompatActivity {
                 img.setScale((float)(realWidth)/(float)(resourceWidth),
                         (float)(realHeight)/(float)(resourceHeight));
                 setupIcons();
+                if(code != null){
+                    img.setCurrentLocation(code);
+                }
                 return true;
             }
         });
@@ -83,6 +110,7 @@ public class MapActivity extends AppCompatActivity {
         int[] points = new int[]{0,100,300,200,500,300};
         img.drawLines(points);
     }
+
 
     private void setupIcons(){
 

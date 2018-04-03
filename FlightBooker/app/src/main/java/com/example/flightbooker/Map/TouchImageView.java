@@ -140,10 +140,10 @@ public class TouchImageView extends AppCompatImageView {
         onDrawReady = false;
         super.setOnTouchListener(new PrivateOnTouchListener());
 
-
         loadMapGraph();
         scaleX = 1f;
         scaleY = 1f;
+
     }
     private MapGraph mapGraph;
     private void loadMapGraph(){
@@ -173,11 +173,51 @@ public class TouchImageView extends AppCompatImageView {
         this.scaleX = scaleX;
         this.scaleY = scaleY;
     }
-    private Bitmap bmpWithIcons;
-    public void drawLines(int[] points) {
+    private String currentLocation;
+    public void setCurrentLocation(String code){
+        currentLocation = code;
+        MapNode n = mapGraph.getNode(currentLocation);
+        if (n != null) {
+            drawCurrentLocation(n);
+        }
+    }
+
+    private void drawCurrentLocation(MapNode n){
         Bitmap bmOverlay = Bitmap.createBitmap(bmpWithIcons.getWidth(), bmpWithIcons.getHeight(), bmpWithIcons.getConfig());
         Canvas canvas = new Canvas(bmOverlay);
         canvas.drawBitmap(bmpWithIcons, new Matrix(), null);
+        Paint p = new Paint();
+        p.setColor(Color.rgb(110,0,110));
+        p.setStrokeWidth(10);
+        canvas.drawCircle(n.getX()*scaleX,n.getY()*scaleY,20,p);
+        super.setImageBitmap(bmOverlay);
+        bmpWithPoint = bmOverlay;
+    }
+
+    public void sendScannedCode(String code){
+        int[] path = mapGraph.getPath("entrance0",code);
+        if(path != null){
+            drawLines(path);
+        }
+    }
+    private String destination;
+    public void setDestination(String dest){
+        destination = dest;
+        drawLines(mapGraph.getPath(currentLocation, destination));
+    }
+    private Bitmap bmpWithIcons;
+    private Bitmap bmpWithPoint;
+    public void drawLines(int[] points) {
+        Bitmap original;
+        if(bmpWithPoint != null){
+            original = bmpWithPoint;
+        }
+        else{
+            original = bmpWithIcons;
+        }
+        Bitmap bmOverlay = Bitmap.createBitmap(original.getWidth(), original.getHeight(), original.getConfig());
+        Canvas canvas = new Canvas(bmOverlay);
+        canvas.drawBitmap(original, new Matrix(), null);
         Paint paint = new Paint();
         paint.setColor(Color.rgb(220,0,0));
         paint.setStrokeWidth(10);
@@ -390,7 +430,9 @@ public class TouchImageView extends AppCompatImageView {
         venueMenu.removeAllViews();
     }
 
-    private void displayVenues(Venue[] venues){
+    private void displayVenues(Icon icon){
+        Venue[] venues = icon.getVenues();
+        final String iconName = icon.getName();
         LinearLayout view;
         ImageView image;
         TextView textView;
@@ -436,6 +478,12 @@ public class TouchImageView extends AppCompatImageView {
 
             view.addView(image);
             view.addView(textView);
+            view.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    drawLines(mapGraph.getPath(currentLocation,iconName));
+                }
+            });
             venueMenu.addView(view);
         }
     }
@@ -1008,9 +1056,8 @@ public class TouchImageView extends AppCompatImageView {
                         if(last.x == curr.x && last.y == curr.y){
                             for(int i = 0; i < icons.length; i++){
                                 if(icons[i].inRange(pt.x,pt.y) && icons[i].hasVenues()){
-                                    displayVenues(icons[i].getVenues());
+                                    displayVenues(icons[i]);
                                     detailView.setVisibility(View.VISIBLE);
-                                    drawLines(mapGraph.getPath("entrance0",icons[i].getName()));
                                     break;
                                 }
                             }

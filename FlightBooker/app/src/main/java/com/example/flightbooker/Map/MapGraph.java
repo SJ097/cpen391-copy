@@ -115,7 +115,6 @@ public class MapGraph implements Serializable{
     }
 
     public int[] getPath(String start,String end){
-        System.out.println("size " + paths.size());
         AbstractMap.SimpleEntry<Integer,Integer> pforward = new AbstractMap.SimpleEntry(start,end);
         AbstractMap.SimpleEntry<Integer,Integer> pbackward = new AbstractMap.SimpleEntry(end,start);
 
@@ -131,7 +130,7 @@ public class MapGraph implements Serializable{
             }
         }
         else{
-            throw new IllegalArgumentException("Points not found");
+            return null;
         }
         int[] path = new int[nodes.length*2];
         for(int i = 0; i < nodes.length; i++){
@@ -145,7 +144,7 @@ public class MapGraph implements Serializable{
         Iterator it = nodes.iterator();
         while(it.hasNext()){
             MapNode n = (MapNode) it.next();
-            if(n.getName() == name){
+            if(n.getName().equals(name) == true){
                 return n;
             }
         }
