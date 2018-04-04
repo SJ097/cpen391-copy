@@ -18,8 +18,8 @@
 	//Inputs: 
 	//		1) parameter name is the name of the POST request parameter to check its emptiness
 	//		2) success variable name is the variable name of the variable you want to extract the POST param value into
-	function empty_check_extract($POST_param_name, $success_variable_name, $function_name) {
-		if (empty($_POST["$POST_param_name"])) {
+	function empty_check_extract($POST_param_name, $success_variable_name) {
+		if (!isset($_POST["$POST_param_name"])) {
 			$return_arr = array(
 				'success' => '0',
 				'fail_reason' => "'$POST_param_name' field is required");
@@ -48,6 +48,8 @@
 		empty_check_extract("flyer_phone_number", "flyer_phone_number");
 		empty_check_extract("flyer_email", "flyer_email");
 		empty_check_extract("class", "class");
+		empty_check_extract("class", "class");
+		empty_check_extract("flyer_passport_id", "flyer_passport_id");
 	}
 
 	//Database necessary variables
@@ -71,6 +73,7 @@
 	$flyer_dob;
 	$flyer_phone_number;
 	$flyer_email;
+	$flyer_passport_id;		
 
 	//return json object, but in array before conversion
 	$return_arr;
@@ -80,17 +83,20 @@
 		//error checking of input fields
 		emptiness_check_all_inputs();
 		
-		//print_r("POST request successful! email: $email password: $encrypted_password \n");
+		//To do:
+		//IMPORTANT! Need to check that this seat number and flight_id must be unique!
+		//Problem right now: Multiple reservation with same seat_num, same class, same flight_id are being booked
+		//hacky solution: Ensure app only books flights based on the php function that fetches available seats
 		
 		try {
 			$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 			// set the PDO error mode to exception
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			
-			$sql = "INSERT INTO reservations(`user_id`, `flight_id`, `seat_num`, `status`, `flyer_fname`, `flyer_lname`, `flyer_street_number`, `flyer_street_address`, `flyer_city`, `flyer_postal_code`, 
-			`flyer_gender`, `flyer_dob`, `flyer_phone_number`, `flyer_email`, `class`)
-			VALUES('$user_id', '$flight_id', '$seat_num', 'made', '$flyer_fname', '$flyer_lname', '$flyer_street_number', '$flyer_street_address', '$flyer_city', '$flyer_postal_code', 
-			'$flyer_gender' , '$flyer_dob', '$flyer_phone_number', '$flyer_email', '$class')";
+			$sql = "INSERT INTO reservations(`flyer_passport_id`, `user_id`, `flight_id`, `seat_num`, `class`, `status`, `checkedIn`, `flyer_fname`, `flyer_lname`, `flyer_street_number`, `flyer_street_address`, `flyer_city`, `flyer_postal_code`, 
+			`flyer_gender`, `flyer_dob`, `flyer_phone_number`, `flyer_email`)
+			VALUES('$flyer_passport_id', '$user_id', '$flight_id', '$seat_num', '$class', 'made', '0', '$flyer_fname', '$flyer_lname', '$flyer_street_number', '$flyer_street_address', '$flyer_city', '$flyer_postal_code', 
+			'$flyer_gender' , '$flyer_dob', '$flyer_phone_number', '$flyer_email')";
 			
 			$conn->exec($sql);
 			

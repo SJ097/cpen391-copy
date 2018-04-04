@@ -1,4 +1,6 @@
 <?php
+
+//This is only for testing I think
 echo "Hello world\n";
 echo '<pre>'; print_r("sup testing\n"); '</pre>';
 

@@ -77,7 +77,7 @@
 			}
 			
 			//step 1: fetch row and column sizes for the flight
-			if(strcmp($class, "first") != 0) {
+			if(strcmp($class, "first") == 0) {
 				$sql = "SELECT fr_cl_seat_max_row, fr_cl_seat_max_column FROM flights WHERE flight_id = '$flight_id'";
 				$stmt = $conn->prepare($sql); 
 				$stmt->execute();
@@ -87,7 +87,7 @@
 				$row = $return_arr[0]['fr_cl_seat_max_row'];
 				$column = $return_arr[0]['fr_cl_seat_max_column'];
 			}
-			elseif(strcmp($class, "business") != 0) {
+			elseif(strcmp($class, "business") == 0) {
 				$sql = "SELECT bn_cl_seat_max_row, bn_cl_seat_max_column FROM flights WHERE flight_id = '$flight_id'";
 				$stmt = $conn->prepare($sql); 
 				$stmt->execute();
@@ -97,7 +97,7 @@
 				$row = $return_arr[0]['bn_cl_seat_max_row'];
 				$column = $return_arr[0]['bn_cl_seat_max_column'];
 			}		
-			elseif(strcmp($class, "economy") != 0) {
+			elseif(strcmp($class, "economy") == 0) {
 				$sql = "SELECT econ_cl_seat_max_row, econ_cl_seat_max_column FROM flights WHERE flight_id = '$flight_id'";
 				$stmt = $conn->prepare($sql); 
 				$stmt->execute();
@@ -118,8 +118,8 @@
 			//create array with all 1 indicating available
 			$seats_array = array_fill(0, $row * $column, 1);
 			
-			//step 2: Fetch taken seats for each class that are NOT cancelled
-			$stmt = $conn->prepare("SELECT R.seat_num FROM flights F, reservations R WHERE R.flight_id = F.flight_id AND R.class = '$class' AND R.status = 'made'"); 
+			//step 2: Fetch taken seats of the flight for the specified class that are NOT cancelled aka made
+			$stmt = $conn->prepare("SELECT seat_num FROM flights natural join reservations WHERE flight_id = '$flight_id' AND class = '$class' AND status = 'made'"); 
 			$stmt->execute();
 			
 			//fetch all the taken seats

@@ -53,7 +53,7 @@
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			//print_r("Connected to database successfully\n"); 
 			
-			$sql = "SELECT * FROM users WHERE email='$email'";
+			$sql = "SELECT * FROM users WHERE email='$email' and encrypted_password='$encrypted_password'";
 			
 			// Prepare statement
 			$stmt = $conn->prepare($sql);
@@ -67,7 +67,7 @@
 				//passwords match
 				$return_arr = array(
 					'success' => '0',
-					'fail_reason' => 'No such email');
+					'fail_reason' => 'No such email or password and email do not match');
 					
 				//return data
 				echo json_encode($return_arr);
@@ -86,29 +86,15 @@
 			
 			//fetch password from database
 			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-			$password_from_database = $result[0]["encrypted_password"];
-			
-			//if passwords do not match
-			if($password_from_database != $encrypted_password) {
-				//passwords do not match
-				$return_arr = array(
-					'success' => '0',
-					'fail_reason' => 'email and passwords do not match');
-				
-				//return data
-				echo json_encode($return_arr);
-				die();
-			}
 			
 			//passwords match: Now give the client all info about the user EXCEPT password
 			
 			$user_info = array(
 				'user_id' => $result[0]['user_id'],
-				'email' => $result[0]['email'],
 				'phone_number' => $result[0]['phone_number'],
+				'passport_id' => $result[0]['passport_id'],
 				'first_name' => $result[0]['first_name'],
 				'last_name' => $result[0]['last_name'],
-				'encrypted_password' => $result[0]['encrypted_password'],
 				'street_number' => $result[0]['street_number'],
 				'street_address' => $result[0]['street_address'],
 				'city' => $result[0]['city'],

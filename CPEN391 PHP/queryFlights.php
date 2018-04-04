@@ -33,6 +33,7 @@
 	
 	function check_all_inputs() {
 		check_extract("dep_airport", "dep_airport");
+		check_extract("arr_airport", "arr_airport");
 		check_extract("from", "from");
 		check_extract("until", "until");
 	}
@@ -45,6 +46,7 @@
 
 	//HTTP Post Req variables
 	$dep_airport;
+	$arr_airport;
 	$from;
 	$until;
 	
@@ -55,21 +57,32 @@
 		//error checking of input fields
 		check_all_inputs();
 		
-		//print_r("POST request successful! email: $email password: $encrypted_password \n");
-		
 		try {
 			$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 			// set the PDO error mode to exception
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			//print_r("Connected to database successfully\n"); 
 			
 			//if there is no upperbound
 			if(strcmp($until, "inf") == 0) {
-				$stmt = $conn->prepare("SELECT * FROM flights WHERE dep_airport='$dep_airport' AND DATE(dep_datetime) >= '$from'"); 
+				
+				if(strcmp($arr_airport, "any") == 0) {
+					$stmt = $conn->prepare("SELECT * FROM flights WHERE dep_airport='$dep_airport' AND DATE(dep_datetime) >= '$from'"); 
+				}
+				else {
+					$stmt = $conn->prepare("SELECT * FROM flights WHERE dep_airport='$dep_airport' AND arr_airport='$arr_airport' AND 
+					DATE(dep_datetime) >= '$from'"); 
+				}
 			} 
 			//if there is an upper bound
 			else {
-				$stmt = $conn->prepare("SELECT * FROM flights WHERE dep_airport='$dep_airport' AND DATE(dep_datetime) >= '$from' AND DATE(dep_datetime) <= '$until'"); 
+				if(strcmp($arr_airport, "any") == 0) {
+					$stmt = $conn->prepare("SELECT * FROM flights WHERE dep_airport='$dep_airport' AND DATE(dep_datetime) >= '$from' AND DATE(dep_datetime) <= '$until'"); 
+				}
+				else {
+					$stmt = $conn->prepare("SELECT * FROM flights WHERE dep_airport='$dep_airport' AND arr_airport='$arr_airport' AND 
+					DATE(dep_datetime) >= '$from' AND DATE(dep_datetime) <= '$until'"); 
+				}
+				
 			}
 			
 			// execute the query
@@ -81,7 +94,7 @@
 			$return_arr = array(
 				'success' => '1',
 				'fail_reason' => "None",
-				'flight_info' => $temp);
+				'flights' => $temp);
 			//return data
 			echo json_encode($return_arr);
 		}
