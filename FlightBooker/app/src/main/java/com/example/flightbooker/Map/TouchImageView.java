@@ -141,6 +141,7 @@ public class TouchImageView extends AppCompatImageView {
         super.setOnTouchListener(new PrivateOnTouchListener());
 
         loadMapGraph();
+        currentLocation = "entrance0";
         scaleX = 1f;
         scaleY = 1f;
 

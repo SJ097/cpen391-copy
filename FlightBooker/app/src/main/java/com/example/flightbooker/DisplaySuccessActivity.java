@@ -28,6 +28,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.flightbooker.Map.MapActivity;
+import com.example.flightbooker.cpen391.m24111.bagvision.activities.CameraActivity;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -63,6 +64,7 @@ public class DisplaySuccessActivity extends AppCompatActivity {
         Button flight_history = (Button) findViewById(R.id.flight_history);
         Button airport_map = (Button) findViewById(R.id.map_button);
         Button interactive_map = (Button) findViewById(R.id.interactive_map);
+        Button object_recognition = (Button) findViewById(R.id.object_recognition);
 
 
         check_flights.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +94,13 @@ public class DisplaySuccessActivity extends AppCompatActivity {
             public void onClick(View view) {
                 getFlightQuery();
                 startActivity(new Intent(DisplaySuccessActivity.this, MapsActivity.class));
+            }
+        });
+
+        object_recognition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(DisplaySuccessActivity.this, CameraActivity.class));
             }
         });
     }

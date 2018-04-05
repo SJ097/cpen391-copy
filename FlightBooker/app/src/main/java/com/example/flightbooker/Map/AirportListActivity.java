@@ -71,7 +71,7 @@ public class AirportListActivity extends AppCompatActivity{
             final String thisAirport = entry.getKey();
             TextView view = new TextView(context);
             view.setText(entry.getValue());
-            view.setTextSize(40);
+            view.setTextSize(30);
             view.setTextColor(Color.BLACK);
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(

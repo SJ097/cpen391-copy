@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
 
+project.ext.ASSET_DIR = projectDir.toString() + '/assets'
+project.ext.TMP_DIR   = project.buildDir.toString() + '/downloads'
+
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -43,4 +46,5 @@ dependencies {
     compile 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
     compile 'com.google.zxing:core:3.2.1'
     testCompile 'junit:junit:4.12'
+    compile 'org.tensorflow:tensorflow-android:+'
 }

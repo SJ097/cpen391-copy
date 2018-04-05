@@ -63,21 +63,14 @@
                 android:text="World Map"
                 android:drawableLeft="@drawable/ic_earth"/>
 
-            <!--<Button
-                android:id="@+id/change_password"
+            <Button
+                android:id="@+id/object_recognition"
                 android:layout_width="175dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="360dp"
                 android:layout_marginLeft="16dp"
-                android:text="Change Password" />
-
-            <Button
-                android:id="@+id/log_out"
-                android:layout_width="175dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="500dp"
-                android:layout_marginLeft="16dp"
-                android:text="Log Out" /> -->
+                android:text="Object Recognition"
+                android:drawableLeft="@drawable/ic_photo_size"/>
 
 
         </FrameLayout>

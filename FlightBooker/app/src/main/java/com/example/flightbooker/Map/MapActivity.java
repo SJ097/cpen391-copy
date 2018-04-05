@@ -19,18 +19,33 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.example.flightbooker.CustomRequest;
+import com.example.flightbooker.FlightHistoryActivity;
 import com.example.flightbooker.LoginActivity;
 import com.example.flightbooker.PasswordActivity;
 import com.example.flightbooker.UserInfoActivity;
+import com.example.flightbooker.VolleySingleton;
 import com.google.zxing.integration.android.IntentIntegrator;
 
 import com.example.flightbooker.DisplaySuccessActivity;
 import com.example.flightbooker.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MapActivity extends AppCompatActivity {
 
@@ -38,10 +53,17 @@ public class MapActivity extends AppCompatActivity {
     private TouchImageView img;
     private ScrollView detailView;
     private LinearLayout venueMenu, purpleMarker;
+    private SharedPreferences preferences;
+    private String userID;
+    private String[] ongoingArray;
+    private Map<String, Icon[]> iconMap = new HashMap();
+    private String airportChoice;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
         toolbar.bringToFront();
@@ -50,6 +72,9 @@ public class MapActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        userID = preferences.getString("User ID", "");
 
         //backButton = findViewById(R.id.map_back_button);
         xButton = findViewById(R.id.xbutton);
@@ -72,11 +97,15 @@ public class MapActivity extends AppCompatActivity {
             }
         });
 
-        String airportChoice = intent.getStringExtra("MAP_CHOICE");
-        if(airportChoice != null){
-            int resId = getResources().getIdentifier(airportChoice + "_small","drawable",getApplicationContext().getPackageName());
-            img.setImageResource(resId);
+        purpleMarker.setVisibility(LinearLayout.INVISIBLE);
+
+         airportChoice = intent.getStringExtra("MAP_CHOICE");
+        if(airportChoice == null){
+            airportChoice = "macleod";
         }
+        int resId = getResources().getIdentifier(airportChoice + "_small","drawable",getApplicationContext().getPackageName());
+        img.setImageResource(resId);
+
 
 
         /*cameraButton.setOnClickListener(new View.OnClickListener(){
@@ -115,6 +144,12 @@ public class MapActivity extends AppCompatActivity {
                     img.setCurrentLocation(code);
                     purpleMarker.setVisibility(View.VISIBLE);
                 }
+
+                try {
+                    Icon[] icons = iconMap.get(airportChoice);
+                    //img.setIcons(icons);
+                }
+                catch(NullPointerException e){}
                 return true;
             }
         });
@@ -164,6 +199,8 @@ public class MapActivity extends AppCompatActivity {
         venues4[0] = new Venue("Security Office - Checkpoint",null,R.drawable.lock,0,0);
         icons[5].setVenues(venues4);
 
+        iconMap.put("macleod",icons);
+        iconMap.put("yvr",new Icon[0]);
         img.setIcons(icons);
     }
 
@@ -189,7 +226,7 @@ public class MapActivity extends AppCompatActivity {
 
         else if (item.getItemId() == R.id.find_terminal) {
             // Matt add terminal code here
-
+            img.setDestination("gate12");
         }
         else if(item.getItemId() == R.id.goto_airport_list){
             finish();
