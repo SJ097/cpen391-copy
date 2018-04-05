@@ -29,6 +29,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -42,11 +46,14 @@ public class CheckFlightsActivity extends AppCompatActivity implements AdapterVi
     private Button get_flights;
     private ListView listView;
     private String[] flight_info;
+    private String[] flight_info_dummy;
     private String[] items = new String[]{"Economy Class", "Business Class", "First Class"};
     private String selectedClass;
     private String seatClass;
     private int[] numSeats;
+    private int[] numSeatsDummy;
     private int selectedFlightSeats;
+    private Date c;
 
     private LinearLayout keyboard;
 
@@ -89,14 +96,63 @@ public class CheckFlightsActivity extends AppCompatActivity implements AdapterVi
                 imm.hideSoftInputFromWindow(keyboard.getWindowToken(), 0);
                 boolean flag = false;
 
+                c = Calendar.getInstance().getTime();
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                String formattedDate = df.format(c);
+
+                Date today = null;
+
+                try {
+                    today = new SimpleDateFormat("yyyy-MM-dd").parse(formattedDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
                 if (dep_airport.getText().toString().isEmpty()) {
                     dep_airport.setError("This field is required");
                     flag = true;
                 }
 
+                Date from = null;
+
                 if (from_date.getText().toString().isEmpty()) {
                     from_date.setError("This field is required");
                     flag = true;
+                }
+
+                else if (!today.equals(null)) {
+
+                    try {
+                        from = new SimpleDateFormat("yyyy-MM-dd").parse(from_date.getText().toString());
+
+                        if (from.before(today)) {
+                            from_date.setError("Entered date is before today");
+                            flag = true;
+                        }
+
+                    } catch (ParseException e) {
+                        Toast.makeText(getApplicationContext(), "Error parsing date!", Toast.LENGTH_SHORT).show();
+                        flag = true;
+                        e.printStackTrace();
+                    }
+
+                }
+
+                if (!until_date.getText().toString().isEmpty() && !from.equals(null)) {
+
+                    try {
+                        Date to = new SimpleDateFormat("yyyy-MM-dd").parse(until_date.getText().toString());
+
+                        if (to.before(from)) {
+                            until_date.setError("End date is before start date");
+                            flag = true;
+                        }
+
+                    } catch(ParseException e) {
+                        Toast.makeText(getApplicationContext(), "Error parsing date!", Toast.LENGTH_SHORT).show();
+                        flag = true;
+                        e.printStackTrace();
+                    }
                 }
 
                 if (!flag) {
@@ -134,35 +190,64 @@ public class CheckFlightsActivity extends AppCompatActivity implements AdapterVi
                                             JSONArray flights = response.getJSONArray("flights");
 
                                             int numFlights = flights.length();
-                                            flight_info = new String[numFlights];
-                                            numSeats = new int[numFlights];
+                                            flight_info_dummy = new String[numFlights];
+                                            numSeatsDummy = new int[numFlights];
+
+                                            int j = 0;
 
                                             for (int i = 0; i < numFlights; i++) {
                                                 JSONObject aFlight = flights.getJSONObject(i);
 
-                                                flight_info[i] = "Flight ID: " + aFlight.getString("flight_id") + "\n" + aFlight.getString("dep_city") + " to " + aFlight.getString("arr_city") +
-                                                        "\n" + aFlight.getString("dep_datetime") + " to " + aFlight.getString("arr_datetime");
+                                                boolean flag = true;
 
 
-                                                if (selectedClass.equals(items[2])) {
-                                                    numSeats[i] = Integer.parseInt(aFlight.getString("fr_cl_seat_max_row"))
-                                                            *Integer.parseInt(aFlight.getString("fr_cl_seat_max_column"));
-                                                    seatClass = "first";
+                                                try {
+                                                    Date depTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(aFlight.getString("dep_datetime"));
+
+                                                    System.out.println(depTime);
+                                                    System.out.println(c);
+
+                                                    if (depTime.before(c)) {
+                                                        flag = false;
+                                                    }
+
+                                                } catch (ParseException e) {
+                                                    Toast.makeText(getApplicationContext(), "Error parsing time!", Toast.LENGTH_SHORT).show();
+                                                    flag = false;
+                                                    e.printStackTrace();
                                                 }
 
-                                                else if (selectedClass.equals(items[1])) {
-                                                    numSeats[i] = Integer.parseInt(aFlight.getString("bn_cl_seat_max_row"))
-                                                            *Integer.parseInt(aFlight.getString("bn_cl_seat_max_column"));
-                                                    seatClass = "business";
-                                                }
+                                                if (flag) {
 
-                                                else {
-                                                    numSeats[i] = Integer.parseInt(aFlight.getString("econ_cl_seat_max_row"))
-                                                            *Integer.parseInt(aFlight.getString("econ_cl_seat_max_column"));
-                                                    seatClass = "economy";
-                                                }
+                                                    flight_info_dummy[j] = "Flight ID: " + aFlight.getString("flight_id") + "\n" + aFlight.getString("dep_city").replaceAll("/+", " ") + " (" + aFlight.getString("dep_airport") + ") to " + aFlight.getString("arr_city").replaceAll("/+", " ") +
+                                                            " (" + aFlight.getString("arr_airport") + ")\n" + aFlight.getString("dep_datetime") + " to " + aFlight.getString("arr_datetime");
 
-                                                //System.out.println(Integer.toString(numSeats[i]));
+
+                                                    if (selectedClass.equals(items[2])) {
+                                                        numSeatsDummy[j] = Integer.parseInt(aFlight.getString("fr_cl_seat_max_row"))
+                                                                * Integer.parseInt(aFlight.getString("fr_cl_seat_max_column"));
+                                                        seatClass = "first";
+                                                    } else if (selectedClass.equals(items[1])) {
+                                                        numSeatsDummy[j] = Integer.parseInt(aFlight.getString("bn_cl_seat_max_row"))
+                                                                * Integer.parseInt(aFlight.getString("bn_cl_seat_max_column"));
+                                                        seatClass = "business";
+                                                    } else {
+                                                        numSeatsDummy[j] = Integer.parseInt(aFlight.getString("econ_cl_seat_max_row"))
+                                                                * Integer.parseInt(aFlight.getString("econ_cl_seat_max_column"));
+                                                        seatClass = "economy";
+                                                    }
+
+                                                    j++;
+                                                }
+                                            }
+
+                                            numSeats = new int[j];
+                                            flight_info = new String[j];
+
+                                            while (j > 0) {
+                                                numSeats[j-1] = numSeatsDummy[j-1];
+                                                flight_info[j-1] = flight_info_dummy[j-1];
+                                                j--;
                                             }
 
                                             displayFlights();
@@ -231,7 +316,6 @@ public class CheckFlightsActivity extends AppCompatActivity implements AdapterVi
                         Intent intent = new Intent(CheckFlightsActivity.this, FetchSeatsActivity.class);
                         intent.putExtra(SEAT_CLASS, seatClass);
                         intent.putExtra(NUM_SEATS, Integer.toString(selectedFlightSeats));
-                        System.out.println(flight_info.substring(flight_info.indexOf(":")+2,flight_info.indexOf("\n")));
                         intent.putExtra(FLIGHT_ID, flight_info.substring(flight_info.indexOf(":")+2,flight_info.indexOf("\n")));
                         startActivity(intent);
                     }

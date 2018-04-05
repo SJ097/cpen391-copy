@@ -36,10 +36,9 @@ public class FlightHistoryActivity extends AppCompatActivity implements AdapterV
     private String[] noFlights = {"You have no flights."};
     private SharedPreferences preferences;
     private String userID;
-    private String[] ongoingArray;// = new String[5];
-    private String[] pastArray;// = new String[5];
-    private String[] cancelledArray;// = new String[5];
-    private String[] allFlights = new String[15];
+    private String[] ongoingArray;
+    private String[] pastArray;
+    private String[] cancelledArray;
     private ProgressBar progressBar;
 
     private int ongoingSize, pastSize, cancelledSize;
@@ -58,6 +57,9 @@ public class FlightHistoryActivity extends AppCompatActivity implements AdapterV
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        progressBar = (ProgressBar)findViewById(R.id.progressBar1);
+
+        progressBar.setVisibility(View.VISIBLE);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         userID = preferences.getString("User ID", "");
@@ -99,14 +101,21 @@ public class FlightHistoryActivity extends AppCompatActivity implements AdapterV
                                 while (!ongoing_reservations.isNull(i)) {
                                     JSONObject reservation = ongoing_reservations.getJSONObject(i);
 
+                                    String check;
+
+                                    if (reservation.getInt("checkedIn") == 0)
+                                        check = "Not checked in";
+
+                                    else check = "Checked in";
+
                                     ongoingArray[i] = "ONGOING\nReservation ID: " + reservation.getString("reservation_id") + "\nFlight ID: " + reservation.get("flight_id") + "\n"
-                                            + reservation.getString("dep_city") + " to " + reservation.getString("arr_city") + "\n" + reservation.getString("dep_datetime")
-                                            + " to " + reservation.getString("arr_datetime") + "\nSeat #" + reservation.getString("seat_num");
+                                            + reservation.getString("dep_city").replaceAll("/+"," ") + " (" + reservation.getString("dep_airport") + ") to " + reservation.getString("arr_city").replaceAll("/+"," ") + " (" + reservation.getString("arr_airport") + ")\n" + reservation.getString("dep_datetime")
+                                            + " to " + reservation.getString("arr_datetime") + "\n" + reservation.getString("class").substring(0, 1).toUpperCase() + reservation.getString("class").substring(1) + " Class Seat #" + reservation.getString("seat_num")
+                                            + "\n" + check;
                                     i++;
                                 }
 
                                 ongoingSize = i;
-                                //System.out.println(ongoingArray);
 
                                 pastArray = new String[past_reservations.length()];
                                 i = 0;
@@ -114,11 +123,18 @@ public class FlightHistoryActivity extends AppCompatActivity implements AdapterV
                                 while (!past_reservations.isNull(i)) {
                                     JSONObject reservation = past_reservations.getJSONObject(i);
 
+                                    String check;
+
+                                    if (reservation.getInt("checkedIn") == 0)
+                                        check = "Missed flight";
+
+                                    else check = "Made flight";
+
                                     pastArray[i] = "PAST\nReservation ID: " + reservation.getString("reservation_id") + "\nFlight ID: " + reservation.get("flight_id") + "\n"
-                                            + reservation.getString("dep_city") + " to " + reservation.getString("arr_city") + "\n" + reservation.getString("dep_datetime")
-                                            + " to " + reservation.getString("arr_datetime") + "\nSeat #" + reservation.getString("seat_num");
+                                            + reservation.getString("dep_city").replaceAll("/+"," ") + " (" + reservation.getString("dep_airport") + ") to " + reservation.getString("arr_city").replaceAll("/+"," ") + " (" + reservation.getString("arr_airport") + ")\n" + reservation.getString("dep_datetime")
+                                            + " to " + reservation.getString("arr_datetime") + "\n" + reservation.getString("class").substring(0, 1).toUpperCase() + reservation.getString("class").substring(1) + " Class Seat #" + reservation.getString("seat_num")
+                                            + "\n" + check;
                                     i++;
-                                    //System.out.println(pastArray[i]);
                                 }
 
                                 pastSize = i;
@@ -129,10 +145,9 @@ public class FlightHistoryActivity extends AppCompatActivity implements AdapterV
                                     JSONObject reservation = cancelled_reservations.getJSONObject(i);
 
                                     cancelledArray[i] = "CANCELLED\nReservation ID: " + reservation.getString("reservation_id") + "\nFlight ID: " + reservation.get("flight_id") + "\n"
-                                            + reservation.getString("dep_city") + " to " + reservation.getString("arr_city") + "\n" + reservation.getString("dep_datetime")
-                                            + " to " + reservation.getString("arr_datetime") + "\nSeat #" + reservation.getString("seat_num");
+                                            + reservation.getString("dep_city").replaceAll("/+"," ") + " (" + reservation.getString("dep_airport") + ") to " + reservation.getString("arr_city").replaceAll("/+"," ") + " (" + reservation.getString("arr_airport") + ")\n" + reservation.getString("dep_datetime")
+                                            + " to " + reservation.getString("arr_datetime") + "\n" + reservation.getString("class").substring(0, 1).toUpperCase() + reservation.getString("class").substring(1) + " Class Seat #" + reservation.getString("seat_num");
                                     i++;
-                                    //System.out.println(cancelledArray[i]);
                                 }
 
                                 cancelledSize = i;
@@ -204,6 +219,8 @@ public class FlightHistoryActivity extends AppCompatActivity implements AdapterV
             for (int i = 0; i < cancelledSize; i++) {
                 finalArray[i+ongoingSize+pastSize] = cancelledArray[i];
             }
+
+            progressBar.setVisibility(View.GONE);
 
             listView = (ListView) findViewById(R.id.flight_history);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, finalArray);

@@ -22,7 +22,7 @@
             android:layout_height="?attr/actionBarSize"
             android:elevation="4dp"
             android:background="@color/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
             </android.support.v7.widget.Toolbar>
@@ -52,14 +52,14 @@
                 android:text="Airport Map" />
 
             <Button
-                android:id="@+id/change_user_info"
+                android:id="@+id/interactive_map"
                 android:layout_width="175dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="290dp"
                 android:layout_marginLeft="16dp"
-                android:text="Change User Info" />
+                android:text="World Map" />
 
-            <Button
+            <!--<Button
                 android:id="@+id/change_password"
                 android:layout_width="175dp"
                 android:layout_height="wrap_content"
@@ -73,21 +73,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="500dp"
                 android:layout_marginLeft="16dp"
-                android:text="Log Out" />
+                android:text="Log Out" /> -->
 
 
         </FrameLayout>
-
-        <!-- Container for contents of drawer - use NavigationView to make configuration easier -->
-        <android.support.design.widget.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:fitsSystemWindows="true"
-            app:menu="@menu/drawer_view" />
-
-
-
-
 </android.support.v4.widget.DrawerLayout>

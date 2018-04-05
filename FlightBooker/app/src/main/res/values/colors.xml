@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="textColorPrimary">#FFF</color>
+    <color name="navyBlue">#000080</color>
+    <color name="red">#FF0000</color>
+    <color name="yellow">#FFF400</color>
 </resources>

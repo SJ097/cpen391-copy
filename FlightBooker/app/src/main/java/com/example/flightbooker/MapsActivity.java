@@ -1,98 +1,84 @@
 package com.example.flightbooker;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.preference.PreferenceManager;
-import android.provider.Settings;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.example.flightbooker.Map.MapActivity;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class DisplaySuccessActivity extends AppCompatActivity {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    private GoogleMap mMap;
     private SharedPreferences preferences;
     private String userID;
+    private List<String> cities;
+    static private Map<String, String> history;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_success);
-
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
+        setContentView(R.layout.activity_maps);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String first = preferences.getString("First Name", "");
         userID = preferences.getString("User ID", "");
 
-        getSupportActionBar().setTitle("Welcome, " + first + "!");//message);
+        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    }
 
-        Button check_flights = (Button) findViewById(R.id.check_flights);
-        Button flight_history = (Button) findViewById(R.id.flight_history);
-        //Button change_password = (Button) findViewById(R.id.change_password);
-        Button airport_map = (Button) findViewById(R.id.map_button);
-        //Button log_out = (Button) findViewById(R.id.log_out);
-        //Button user_info = (Button) findViewById(R.id.change_user_info);
-        Button interactive_map = (Button) findViewById(R.id.interactive_map);
 
-        check_flights.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent (DisplaySuccessActivity.this, CheckFlightsActivity.class));
-            }
-        });
+    /**
+     * Manipulates the map once available.
+     * This callback is triggered when the map is ready to be used.
+     * This is where we can add markers or lines, add listeners or move the camera. In this case,
+     * we just add a marker near Sydney, Australia.
+     * If Google Play services is not installed on the device, the user will be prompted to install
+     * it inside the SupportMapFragment. This method will only be triggered once the user has
+     * installed Google Play services and returned to the app.
+     */
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
 
-        flight_history.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent (DisplaySuccessActivity.this, FlightHistoryActivity.class));
-            }
-        });
+        cities = new ArrayList<>();
+        history = new HashMap<>();
 
-        airport_map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //finish();
-                startActivity(new Intent(DisplaySuccessActivity.this, MapActivity.class));
-            }
-        });
+        getFlightQuery();
 
-        interactive_map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getFlightQuery();
-                startActivity(new Intent(DisplaySuccessActivity.this, MapsActivity.class));
-            }
-        });
+        SharedPreferences.Editor editor = preferences.edit();
+
+        for (String villes : cities) {
+            editor.remove(villes);
+            editor.commit();
+        }
     }
 
     private void getFlightQuery() {
@@ -128,17 +114,73 @@ public class DisplaySuccessActivity extends AppCompatActivity {
                                     String depCity = ongoing_reservations.getJSONObject(i).getString("dep_airport")+"+Airport";
                                     String destCity = ongoing_reservations.getJSONObject(i).getString("arr_airport")+"+Airport";
 
-                                    displayOnMap(depCity);
-                                    displayOnMap(destCity);
+                                    if (!cities.contains(depCity)) {
+                                        displayOnMap(depCity);
+                                        cities.add(depCity);
+                                        history.put(depCity, preferences.getString(depCity, ""));
+                                    }
+
+                                    if (!cities.contains(destCity)) {
+                                        displayOnMap(destCity);
+                                        cities.add(destCity);
+                                        history.put(destCity, preferences.getString(destCity, ""));
+                                    }
+
+                                    String departure = history.get(depCity);
+                                    String arrival = history.get(destCity);
+
+                                    double depLat = Double.parseDouble(departure.substring(departure.indexOf("(")+1, departure.indexOf(",")));
+                                    double depLong = Double.parseDouble(departure.substring(departure.indexOf(",")+1, departure.indexOf(")")));
+
+                                    double arrLat = Double.parseDouble(arrival.substring(arrival.indexOf("(")+1, arrival.indexOf(",")));
+                                    double arrLong = Double.parseDouble(arrival.substring(arrival.indexOf(",")+1, arrival.indexOf(")")));
+
+                                    Polyline polyline1 = mMap.addPolyline(new PolylineOptions()
+                                            .clickable(true)
+                                            .color(Color.BLUE)
+                                            .add(
+                                                    new LatLng(depLat, depLong),
+                                                    new LatLng(arrLat, arrLong)));
                                 }
 
                                 for (int i = 0; i < past_reservations.length(); i++) {
                                     String depCity = past_reservations.getJSONObject(i).getString("dep_airport")+"+Airport";
                                     String destCity = past_reservations.getJSONObject(i).getString("arr_airport")+"+Airport";
 
-                                    displayOnMap(depCity);
-                                    displayOnMap(destCity);
+                                    if (!cities.contains(depCity)) {
+                                        displayOnMap(depCity);
+                                        cities.add(depCity);
+                                        history.put(depCity, preferences.getString(depCity, ""));
+                                    }
+
+                                    if (!cities.contains(destCity)) {
+                                        displayOnMap(destCity);
+                                        cities.add(destCity);
+                                        history.put(destCity, preferences.getString(destCity, ""));
+                                    }
+
+                                    String departure = history.get(depCity);
+                                    String arrival = history.get(destCity);
+
+                                    double depLat = Double.parseDouble(departure.substring(departure.indexOf("(")+1, departure.indexOf(",")));
+                                    double depLong = Double.parseDouble(departure.substring(departure.indexOf(",")+1, departure.indexOf(")")));
+
+                                    System.out.println(arrival);
+
+                                    double arrLat = Double.parseDouble(arrival.substring(arrival.indexOf("(")+1, arrival.indexOf(",")));
+                                    double arrLong = Double.parseDouble(arrival.substring(arrival.indexOf(",")+1, arrival.indexOf(")")));
+
+                                    Polyline polyline1 = mMap.addPolyline(new PolylineOptions()
+                                            .clickable(true)
+                                            .add(
+                                                    new LatLng(depLat, depLong),
+                                                    new LatLng(arrLat, arrLong)));
+
+                                    /*Marker centerOneMarker = mMap.addMarker(new MarkerOptions()
+                                            .position(new LatLng((depLat+arrLat)/2, (depLong+arrLong)/2)));*/
                                 }
+
+
                             }
 
                         } catch (JSONException e) {
@@ -202,9 +244,11 @@ public class DisplaySuccessActivity extends AppCompatActivity {
                                 final double longitude = data.getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getDouble("lng");
                                 final double latitude = data.getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getDouble("lat");
                                 LatLng mtl = new LatLng(latitude, longitude);
+                                mMap.addMarker(new MarkerOptions().position(mtl).title(address));
                                 SharedPreferences.Editor editor = preferences.edit();
                                 editor.putString(ville, mtl.toString());
                                 editor.apply();
+                                //getCoords(ville, mtl, 0);
                                 //editor.commit();
                                 //System.out.println(ville + preferences.getString(ville, ""));
                                 //mMap.moveCamera(CameraUpdateFactory.newLatLng(mtl));
@@ -243,34 +287,4 @@ public class DisplaySuccessActivity extends AppCompatActivity {
         VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(jsObjRequest);
     }
 
-    @Override
-    public void onBackPressed() {
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.my_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (item.getItemId() == R.id.info_user_change) {
-            startActivity(new Intent (DisplaySuccessActivity.this, UserInfoActivity.class));
-        }
-
-        else if (item.getItemId() == R.id.password_change) {
-            startActivity(new Intent (DisplaySuccessActivity.this, PasswordActivity.class));
-        }
-
-        else if (item.getItemId() == R.id.logout_button) {
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            preferences.edit().clear().commit();
-            startActivity(new Intent (DisplaySuccessActivity.this, LoginActivity.class));
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

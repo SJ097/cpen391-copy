@@ -1,10 +1,18 @@
 package com.example.flightbooker.Map;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.BitmapDrawable;
+import android.preference.PreferenceManager;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
@@ -12,6 +20,9 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
+import com.example.flightbooker.LoginActivity;
+import com.example.flightbooker.PasswordActivity;
+import com.example.flightbooker.UserInfoActivity;
 import com.google.zxing.integration.android.IntentIntegrator;
 
 import com.example.flightbooker.DisplaySuccessActivity;
@@ -19,8 +30,7 @@ import com.example.flightbooker.R;
 
 public class MapActivity extends AppCompatActivity {
 
-    private ImageButton xButton,backButton, cameraButton;
-
+    private ImageButton xButton;
     private TouchImageView img;
     private ScrollView detailView;
     private LinearLayout venueMenu;
@@ -29,25 +39,21 @@ public class MapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
-        backButton = findViewById(R.id.map_back_button);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Airport Map");
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        //backButton = findViewById(R.id.map_back_button);
         xButton = findViewById(R.id.xbutton);
         detailView = findViewById(R.id.detailView);
         img = findViewById(R.id.img);
         venueMenu = findViewById(R.id.venueMenu);
-        cameraButton = findViewById(R.id.camera_button);
-        Button findTerminal = findViewById(R.id.findterminal);
 
         final String code = getIntent().getStringExtra("SCANNED_CODE");
 
-
-        backButton.bringToFront();
-        backButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                finish();
-                startActivity(new Intent(MapActivity.this, DisplaySuccessActivity.class));
-            }
-        });
         img.setDetailView(detailView);
         img.setVenueMenu(venueMenu);
         detailView.setVisibility(View.INVISIBLE);
@@ -58,20 +64,13 @@ public class MapActivity extends AppCompatActivity {
             }
         });
 
-        findTerminal.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                img.setDestination("");
-            }
-        });
-
-        cameraButton.setOnClickListener(new View.OnClickListener(){
+        /*cameraButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 finish();
                 startActivity(new Intent(MapActivity.this, QRScanner.class));
             }
-        });
+        });*/
 
 
         final int resourceHeight = 924;
@@ -156,4 +155,26 @@ public class MapActivity extends AppCompatActivity {
     {
         button.setText("Text");
     }*/
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.my_menu2, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.qr_camera) {
+            startActivity(new Intent(MapActivity.this, QRScanner.class));
+        }
+
+        else if (item.getItemId() == R.id.find_terminal) {
+            // Matt add QR code here
+            //startActivity(new Intent (DisplaySuccessActivity.this, UserInfoActivity.class));
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

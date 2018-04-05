@@ -203,31 +203,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         if (TextUtils.isEmpty(password)) {
             mPasswordView.setError(getString(R.string.error_field_required));
-            focusView = mPasswordView;
             cancel = true;
         }
-        // Check for a valid password, if the user entered one.
-        /*else if (!isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
-            cancel = true;
-        }*/
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
             mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
             cancel = true;
         } else if (!isEmailValid(email)) {
             mEmailView.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailView;
             cancel = true;
         }
 
         if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
-            focusView.requestFocus();
+
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
@@ -259,18 +248,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private void onFail(String reason) {
 
-        View focusView = null;
+        //View focusView = null;
 
         if (reason.contains("such email")) {
             mEmailView.setError(reason);
-            focusView = mEmailView;
+            //focusView = mEmailView;
         }
        else if (reason.contains("password")) {
             mPasswordView.setError(reason);
-            focusView = mPasswordView;
+            //focusView = mPasswordView;
         }
 
-        focusView.requestFocus();
+        //focusView.requestFocus();
     }
 
     private void checkDatabase(String username, String password) {
@@ -495,7 +484,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
+                //mPasswordView.requestFocus();
             }
         }
 
@@ -504,6 +493,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }
 

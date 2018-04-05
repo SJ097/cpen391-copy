@@ -10,24 +10,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/map_back_button"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-                android:src="@drawable/ic_arrow_back" />
-
-        <Button
-            android:id="@+id/findterminal"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_centerHorizontal="true"
-            android:text="Find My Terminal"
-            />
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:elevation="4dp"
+            android:background="@color/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <com.example.flightbooker.Map.TouchImageView
             android:id="@+id/img"
@@ -74,14 +64,5 @@
 
         </ScrollView>
 
-        <ImageButton
-            android:id="@+id/camera_button"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:layout_alignBottom="@+id/map_back_button"
-            android:layout_alignTop="@+id/map_back_button"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            app:srcCompat="@drawable/ic_menu_camera" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
