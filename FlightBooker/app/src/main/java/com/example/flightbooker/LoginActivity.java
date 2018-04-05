@@ -242,13 +242,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private void onSuccess(String email/*View view*/) {
         Intent intent = new Intent(this, DisplaySuccessActivity.class);
-        //intent.putExtra(USER_WELCOME, "Welcome, " + email + "!");
+        showProgress(false);
         startActivity(intent);
     }
 
     private void onFail(String reason) {
 
-        //View focusView = null;
+        showProgress(false);
 
         if (reason.contains("such email")) {
             mEmailView.setError(reason);
@@ -284,7 +284,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                             if(success == 0) {
                                 String reason = response.getString("fail_reason");
-                                //Toast.makeText(getApplicationContext(), reason, Toast.LENGTH_SHORT).show();
                                 onFail(reason);
                             }
 
@@ -345,7 +344,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 });
 
         VolleySingleton.getInstance(this).addToRequestQueue(jsObjRequest);
-        showProgress(false);
     }
 
     /**
@@ -478,7 +476,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected void onPostExecute(final Boolean success) {
             mAuthTask = null;
-            showProgress(false);
+            //showProgress(false);
 
             if (success) {
                 finish();
@@ -491,7 +489,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         @Override
         protected void onCancelled() {
             mAuthTask = null;
-            showProgress(false);
+            //showProgress(false);
         }
     }
 

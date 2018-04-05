@@ -108,7 +108,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 //Toast.makeText(getApplicationContext(), "Password changed!", Toast.LENGTH_SHORT).show();
                                 JSONArray ongoing_reservations = response.getJSONArray("ongoing_reservations");
                                 JSONArray past_reservations = response.getJSONArray("past_reservations");
-                                JSONArray cancelled_reservations = response.getJSONArray("cancelled_reservations");
 
                                 for (int i = 0; i < ongoing_reservations.length(); i++) {
                                     String depCity = ongoing_reservations.getJSONObject(i).getString("dep_airport")+"+Airport";
@@ -234,7 +233,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 String reason = response.getString("fail_reason");
                                 System.out.println(reason);
                                 Toast.makeText(getApplicationContext(), reason, Toast.LENGTH_SHORT).show();
-                                //startActivity(new Intent(PasswordActivity.this, DisplaySuccessActivity.class));
                             }
 
                             //if log in successful
@@ -246,8 +244,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 LatLng mtl = new LatLng(latitude, longitude);
                                 mMap.addMarker(new MarkerOptions().position(mtl).title(address));
                                 SharedPreferences.Editor editor = preferences.edit();
-                                editor.putString(ville, mtl.toString());
-                                editor.apply();
+
+                                do {
+                                    editor.putString(ville, mtl.toString());
+                                    editor.apply();
+                                } while (!preferences.getString(ville, "").equals(mtl.toString()));
                                 //getCoords(ville, mtl, 0);
                                 //editor.commit();
                                 //System.out.println(ville + preferences.getString(ville, ""));
