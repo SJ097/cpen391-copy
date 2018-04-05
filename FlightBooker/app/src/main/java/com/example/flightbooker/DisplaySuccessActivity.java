@@ -3,8 +3,10 @@ package com.example.flightbooker;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -42,6 +44,7 @@ public class DisplaySuccessActivity extends AppCompatActivity {
     private SharedPreferences preferences;
     private String userID;
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,15 +57,13 @@ public class DisplaySuccessActivity extends AppCompatActivity {
         String first = preferences.getString("First Name", "");
         userID = preferences.getString("User ID", "");
 
-        getSupportActionBar().setTitle("Welcome, " + first + "!");//message);
+        getSupportActionBar().setTitle("Welcome, " + first + "!");
 
         Button check_flights = (Button) findViewById(R.id.check_flights);
         Button flight_history = (Button) findViewById(R.id.flight_history);
-        //Button change_password = (Button) findViewById(R.id.change_password);
         Button airport_map = (Button) findViewById(R.id.map_button);
-        //Button log_out = (Button) findViewById(R.id.log_out);
-        //Button user_info = (Button) findViewById(R.id.change_user_info);
         Button interactive_map = (Button) findViewById(R.id.interactive_map);
+
 
         check_flights.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,7 +102,6 @@ public class DisplaySuccessActivity extends AppCompatActivity {
         params.put("user_id", userID.toString());
 
         String loginURL = "http://34.218.93.237/fetchBookings.php";
-        final TextView mTextView = (TextView) findViewById(R.id.text);
 
         CustomRequest jsObjRequest = new CustomRequest(Request.Method.POST, loginURL, params,
                 new Response.Listener<JSONObject>() {

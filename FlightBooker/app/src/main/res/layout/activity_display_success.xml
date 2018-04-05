@@ -33,7 +33,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
                 android:layout_marginLeft="16dp"
-                android:text="Check Flights" />
+                android:text="Check Flights"
+                android:drawableLeft="@drawable/ic_search"/>
 
             <Button
                 android:id="@+id/flight_history"
@@ -41,7 +42,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="150dp"
                 android:layout_marginLeft="16dp"
-                android:text="Flight History" />
+                android:text="Flight History"
+                android:drawableLeft="@drawable/ic_book"/>
 
             <Button
                 android:id="@+id/map_button"
@@ -49,7 +51,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="220dp"
                 android:layout_marginLeft="16dp"
-                android:text="Airport Map" />
+                android:text="Airport Map"
+                android:drawableLeft="@drawable/ic_map"/>
 
             <Button
                 android:id="@+id/interactive_map"
@@ -57,7 +60,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="290dp"
                 android:layout_marginLeft="16dp"
-                android:text="World Map" />
+                android:text="World Map"
+                android:drawableLeft="@drawable/ic_earth"/>
 
             <!--<Button
                 android:id="@+id/change_password"
