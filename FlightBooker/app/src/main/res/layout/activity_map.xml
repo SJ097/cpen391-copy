@@ -64,5 +64,31 @@
 
         </ScrollView>
 
+        <LinearLayout
+            android:id="@+id/purpleMarker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/my_toolbar"
+            android:layout_marginLeft="29dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="17dp"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="#6e006e"
+                android:layout_marginRight="5dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="you are here"
+                />
+        </LinearLayout>
+
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

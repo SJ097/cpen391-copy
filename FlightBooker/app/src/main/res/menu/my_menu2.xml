@@ -11,5 +11,9 @@
         android:id="@+id/qr_camera"
         android:title="Camera"
         app:showAsAction="never"/>
-
+    <item
+        android:id="@+id/goto_airport_list"
+        android:title="Airport List"
+        app:showAsAction="never"
+        />
 </menu>

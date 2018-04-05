@@ -28,12 +28,16 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.example.flightbooker.DisplaySuccessActivity;
 import com.example.flightbooker.R;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
 public class MapActivity extends AppCompatActivity {
 
     private ImageButton xButton;
     private TouchImageView img;
     private ScrollView detailView;
-    private LinearLayout venueMenu;
+    private LinearLayout venueMenu, purpleMarker;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +56,11 @@ public class MapActivity extends AppCompatActivity {
         detailView = findViewById(R.id.detailView);
         img = findViewById(R.id.img);
         venueMenu = findViewById(R.id.venueMenu);
+        purpleMarker = findViewById(R.id.purpleMarker);
 
-        final String code = getIntent().getStringExtra("SCANNED_CODE");
+        Intent intent = getIntent();
+
+        final String code = intent.getStringExtra("SCANNED_CODE");
 
         img.setDetailView(detailView);
         img.setVenueMenu(venueMenu);
@@ -64,6 +71,13 @@ public class MapActivity extends AppCompatActivity {
                 detailView.setVisibility(View.INVISIBLE);
             }
         });
+
+        String airportChoice = intent.getStringExtra("MAP_CHOICE");
+        if(airportChoice != null){
+            int resId = getResources().getIdentifier(airportChoice + "_small","drawable",getApplicationContext().getPackageName());
+            img.setImageResource(resId);
+        }
+
 
         /*cameraButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -99,6 +113,7 @@ public class MapActivity extends AppCompatActivity {
                 setupIcons();
                 if(code != null){
                     img.setCurrentLocation(code);
+                    purpleMarker.setVisibility(View.VISIBLE);
                 }
                 return true;
             }
@@ -174,7 +189,11 @@ public class MapActivity extends AppCompatActivity {
 
         else if (item.getItemId() == R.id.find_terminal) {
             // Matt add terminal code here
-            //startActivity(new Intent (DisplaySuccessActivity.this, UserInfoActivity.class));
+
+        }
+        else if(item.getItemId() == R.id.goto_airport_list){
+            finish();
+            startActivity(new Intent(MapActivity.this, AirportListActivity.class));
         }
 
         return super.onOptionsItemSelected(item);

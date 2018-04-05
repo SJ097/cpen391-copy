@@ -116,6 +116,7 @@
                 android:value=".DisplaySuccessActivity" />
         </activity>
         <activity android:name=".Map.QRScanner" />
+        <activity android:name=".Map.AirportListActivity"/>
     </application>
 
 </manifest>
