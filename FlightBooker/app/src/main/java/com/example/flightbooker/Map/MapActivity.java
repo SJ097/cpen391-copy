@@ -40,6 +40,7 @@ public class MapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_map);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        toolbar.bringToFront();
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Airport Map");
 
@@ -167,11 +168,12 @@ public class MapActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (item.getItemId() == R.id.qr_camera) {
+            finish();
             startActivity(new Intent(MapActivity.this, QRScanner.class));
         }
 
         else if (item.getItemId() == R.id.find_terminal) {
-            // Matt add QR code here
+            // Matt add terminal code here
             //startActivity(new Intent (DisplaySuccessActivity.this, UserInfoActivity.class));
         }
 

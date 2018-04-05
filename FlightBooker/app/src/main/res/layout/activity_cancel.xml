@@ -17,7 +17,7 @@
 
     <TextView
         android:id="@+id/flight_info"
-        android:layout_width="240dp"
+        android:layout_width="317dp"
         android:layout_height="176dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
@@ -31,7 +31,7 @@
     <TextView
         android:id="@+id/cancel_question"
         android:layout_width="349dp"
-        android:layout_height="96dp"
+        android:layout_height="122dp"
         android:layout_marginTop="8dp"
         android:text="Do you wish to cancel this flight?\n You may not receive a full refund."
         android:textAlignment="center"

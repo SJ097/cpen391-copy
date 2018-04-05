@@ -119,7 +119,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".DisplaySuccessActivity" />
         </activity>
-        <<activity android:name=".Map.ScannerActivity" />
         <activity android:name=".Map.QRScanner" />
     </application>
 
