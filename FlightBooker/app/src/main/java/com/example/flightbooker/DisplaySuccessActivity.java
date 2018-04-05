@@ -122,7 +122,6 @@ public class DisplaySuccessActivity extends AppCompatActivity {
                                 //Toast.makeText(getApplicationContext(), "Password changed!", Toast.LENGTH_SHORT).show();
                                 JSONArray ongoing_reservations = response.getJSONArray("ongoing_reservations");
                                 JSONArray past_reservations = response.getJSONArray("past_reservations");
-                                JSONArray cancelled_reservations = response.getJSONArray("cancelled_reservations");
 
                                 for (int i = 0; i < ongoing_reservations.length(); i++) {
                                     String depCity = ongoing_reservations.getJSONObject(i).getString("dep_airport")+"+Airport";
@@ -192,22 +191,20 @@ public class DisplaySuccessActivity extends AppCompatActivity {
                                 String reason = response.getString("fail_reason");
                                 System.out.println(reason);
                                 Toast.makeText(getApplicationContext(), reason, Toast.LENGTH_SHORT).show();
-                                //startActivity(new Intent(PasswordActivity.this, DisplaySuccessActivity.class));
                             }
 
                             //if log in successful
                             else {
                                 JSONArray data = response.getJSONArray("results");
-                                String address = data.getJSONObject(0).getJSONArray("address_components").getJSONObject(0).getString("long_name");
                                 final double longitude = data.getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getDouble("lng");
                                 final double latitude = data.getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getDouble("lat");
                                 LatLng mtl = new LatLng(latitude, longitude);
                                 SharedPreferences.Editor editor = preferences.edit();
-                                editor.putString(ville, mtl.toString());
-                                editor.apply();
-                                //editor.commit();
-                                //System.out.println(ville + preferences.getString(ville, ""));
-                                //mMap.moveCamera(CameraUpdateFactory.newLatLng(mtl));
+
+                                do {
+                                    editor.putString(ville, mtl.toString());
+                                    editor.apply();
+                                } while (!preferences.getString(ville, "").equals(mtl.toString()));
                             }
 
                         } catch (JSONException e) {
