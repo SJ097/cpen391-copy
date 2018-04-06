@@ -71,8 +71,8 @@
 			//three: cancelled reservations
 			
 			$ongoing_reser = array();
-			$past_reser = array();
 			$cancelled_reser = array();
+			$past_reser = array();
 			
 			$today_array = getdate();
 			
@@ -91,7 +91,7 @@
 				if(strcmp($each_reser['status'], "cancelled") == 0) {
 					array_push($cancelled_reser, $each_reser);
 				}
-				//ongoing bookings
+				//ongoing bookings can't miss a booking in the past
 				elseif(new DateTime($each_reser['dep_datetime']) > $today) {
 					array_push($ongoing_reser, $each_reser);
 				}

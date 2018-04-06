@@ -104,10 +104,8 @@
 			
 			//no reservations found
 			if($stmt->rowCount() == 0) {
-				$return_arr = array(
-				'success' => '0',
-				'fail_reason' => "No reservations are available. If you have booked your flight, note that you can only check in within 24 hours at the airport.");
-				echo json_encode($return_arr);
+				//this means no reservation is available or that passport ID is not valid
+				echo "$0";
 				exit();
 			}
 			

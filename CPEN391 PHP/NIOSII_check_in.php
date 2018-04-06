@@ -69,9 +69,7 @@
 			
 			//no reservations found
 			if($stmt->rowCount() == 0) {
-				echo '$';	//start scan character
-				echo '@0^Error: No such reservation exists';
-				echo '$';	//end scan character
+				echo '$0$';
 				die();
 			}
 			
@@ -86,12 +84,7 @@
 			// execute the query
 			$stmt->execute();
 			
-			echo '$';	//start scan character
-			echo '@';
-			
-			echo '1' . '^' . 'None';
-			
-			echo '$';
+			echo '$1$';		//echo success
 		}
 		catch(PDOException $e)
 		{
