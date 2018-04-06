@@ -16,6 +16,9 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-sdk android:minSdkVersion= "21"/>
 
     <application
         android:allowBackup="true"
@@ -117,7 +120,10 @@
         </activity>
         <activity android:name=".Map.QRScanner" />
         <activity android:name=".Map.AirportListActivity"/>
-        <activity android:name=".cpen391.m24111.bagvision.activities.CameraActivity"></activity>
+        <activity
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:name=".cpen391.m24111.bagvision.activities.CameraActivity"/>
     </application>
 
 </manifest>

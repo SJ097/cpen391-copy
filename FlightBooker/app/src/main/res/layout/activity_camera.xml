@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <cpen391.m24111.bagvision.views.CameraOverlayView
+    <com.example.flightbooker.cpen391.m24111.bagvision.views.CameraOverlayView
         android:id="@+id/cameraOverlayView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
